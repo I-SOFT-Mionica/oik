@@ -1,0 +1,7 @@
+{
+  "include": ["biracki_odbor", "tests"],
+  "exclude": ["**/__pycache__", "build", "dist", ".venv", "venv"],
+  "extraPaths": ["."],
+  "pythonVersion": "3.10",
+  "reportMissingImports": "warning"
+}

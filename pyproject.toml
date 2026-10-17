@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biracki_odbor"
+version = "0.1.0"
+description = "Управљање сталним саставом бирачких одбора (Polling-board permanent-composition management for Serbian OIK)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "OIK Tools" }]
+
+dependencies = [
+    "PySide6>=6.6",
+    "openpyxl>=3.1",
+    "python-docx>=1.1",
+    # pywin32 is Windows-only. Used by integrations/outlook.py to read
+    # the local Outlook Inbox via COM (party submissions arrive as
+    # email attachments; the email's ReceivedTime is our truth source
+    # for "latest submission"). The env-marker keeps the Ubuntu
+    # Semantic Release runner from trying to install it.
+    "pywin32>=306; sys_platform == 'win32'",
+    # Licensing client (talks to the waterworks-derived license server).
+    # httpx for HTTPS calls; cryptography to verify the Ed25519 signature
+    # on license.dat offline against the public key in licensing/keys.py
+    # (licences must keep working with no server at all).
+    "httpx>=0.27",
+    "cryptography>=42.0",
+    # Explicit CA trust anchor for the raw-urllib HTTPS calls in
+    # updates.py (see ssl_support.py). Already arrives transitively via
+    # httpx, but listed directly so both pip and PyInstaller's module
+    # graph treat it as a requirement rather than an accident — the
+    # update download fails closed without it on machines whose Windows
+    # root certificates are stale.
+    "certifi>=2024.2.2",
+    # PDF table extraction — used by the RIK document importer, and by
+    # formalizator's label_detector (finds official-form label positions
+    # on a rendered PDF page to auto-place the fill-in overlay).
+    # Pure Python (pdfminer underneath), no system dependencies.
+    "pdfplumber>=0.11",
+    # formalizator: PDF overlay fill mechanism (draw voter data on a
+    # transparent layer, merge onto the frozen official-form background).
+    "reportlab>=4.0",
+    "pypdf>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pyinstaller>=6.3",
+]
+
+[project.gui-scripts]
+biracki-odbor = "biracki_odbor.__main__:main"
+formalizator = "formalizator.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["biracki_odbor*", "formalizator*"]
+
+[tool.setuptools.package-data]
+"biracki_odbor.resources" = ["*", "templates/*"]
+"biracki_odbor.i18n" = ["*.qm", "*.ts"]
+"formalizator.resources" = ["*", "templates/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

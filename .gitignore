@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# PyInstaller
+*.spec.bak
+build/
+dist/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Local config / output (don't commit user data)
+oik_constants.json
+election_config.json
+corrections.log
+sablon/
+stranka_fajlovi/
+popunjeni/
+master/
+resenja/
+
+# Allow example templates
+!biracki_odbor/resources/templates/*.example.json
+biracki_odbor/izmene/BM 9 resenje o izmeni STALNOG SASTAVA BIRACKOG ODBORA.docx
+BM-1-prošireni-sastav-2023.doc
+biracki_odbor/izmene/BM 7 -izmenA PROSERNOG SASTAVA BIRACKOG ODBORA.docx
+
+# Reference material and scratch — deliberately never committed.
+# Celik/ holds the original Čelik prototype plus the real NPRS-3/NPRS-4
+# documents and hand-tuned Mionica templates: citizen-facing forms that
+# may carry real voter data, and MUP's CelikApi binaries, which are not
+# ours to redistribute. temp/ is scratch output (RIK spreadsheets, logs,
+# repro scripts). Both were swept into a commit once by `git add -A`;
+# ignoring them makes that mistake impossible to repeat.
+Celik/
+temp/
+instructions-oik-changelog.md
+
+# Local debug logs and Office lock files — never commit
+biracki_odbor/new forms/debug/
+~$*

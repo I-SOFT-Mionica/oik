@@ -1,0 +1,21 @@
+{
+  "municipality": {
+    "name": "Уб",
+    "name_genitive": "Уба",
+    "name_locative": "Убу",
+    "full_committee_name": "ОПШТИНСКА ИЗБОРНА КОМИСИЈА ОПШТИНЕ УБ"
+  },
+  "polling_stations": [
+    {
+      "bm_number": 1,
+      "name": "ОШ Душан Даниловић",
+      "address": "Краља Петра 1, Уб",
+      "full_name": "ОШ Душан Даниловић — Уб"
+    }
+  ],
+  "chairman": {
+    "title": "ПРЕДСЕДНИК",
+    "name": "Име Презиме"
+  },
+  "lock_password": "bo2026"
+}

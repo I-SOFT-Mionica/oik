@@ -1,0 +1,49 @@
+[
+  {
+    "name": "NPRS-4 - spisak biraca koji podrzavaju izbornu listu",
+    "columns": [
+      {
+        "header": "Редни\nброј",
+        "field_keys": [
+          "__row_number__"
+        ],
+        "separators": [],
+        "column_index": 1
+      },
+      {
+        "header": "Презиме и име бирача",
+        "field_keys": [
+          "surname",
+          "given_name"
+        ],
+        "separators": [
+          " "
+        ],
+        "column_index": 2
+      },
+      {
+        "header": "ЈМБГ",
+        "field_keys": [
+          "jmbg"
+        ],
+        "separators": [],
+        "column_index": 3
+      },
+      {
+        "header": "Овлашћени оверитељ",
+        "field_keys": [
+          "op_tina",
+          "overitelj_ime_i_prezime"
+        ],
+        "separators": [
+          "-"
+        ],
+        "column_index": 4
+      }
+    ],
+    "source_file": "NPRS-4 - spisak biraca koji podrzavaju izbornu listu.xlsx",
+    "header_row": 3,
+    "sort_column_1": "",
+    "sort_column_2": ""
+  }
+]
