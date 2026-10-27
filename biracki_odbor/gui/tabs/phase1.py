@@ -187,7 +187,8 @@ class BasePhase1Tab(QWidget):
         self.btn_send = QPushButton(self._send_btn_label)
         self.btn_send.setToolTip(self._send_btn_tooltip)
         self.btn_send.setEnabled(False)
-        self.btn_send.setVisible(self._send_available)
+        if not self._send_available:  # setVisible(True) here would pop a window
+            self.btn_send.hide()
         self.btn_send.clicked.connect(self._on_send)
         btns.addWidget(self.btn_send)
         self.btn_run = QPushButton(self.tr("Run"))

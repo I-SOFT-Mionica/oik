@@ -23,7 +23,7 @@
     <name>BasePhase1Tab</name>
     <message>
         <location filename="../gui/tabs/phase1.py" line="164"/>
-        <location filename="../gui/tabs/phase1.py" line="327"/>
+        <location filename="../gui/tabs/phase1.py" line="328"/>
         <source>Invalidate and regenerate</source>
         <translation>Поништи и поново генериши</translation>
     </message>
@@ -33,63 +33,63 @@
         <translation>Брише увезене пријаве и генерише нове фајлове са новим идентификатором. Листе које су послале образац морају да поднесу нови.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="193"/>
-        <location filename="../gui/tabs/phase1.py" line="217"/>
+        <location filename="../gui/tabs/phase1.py" line="194"/>
+        <location filename="../gui/tabs/phase1.py" line="218"/>
         <source>Run</source>
         <translation>Покрени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="248"/>
+        <location filename="../gui/tabs/phase1.py" line="249"/>
         <source>Re-run</source>
         <translation>Поново покрени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="298"/>
+        <location filename="../gui/tabs/phase1.py" line="299"/>
         <source>Phase 1 completed with {n_err} {error_word}. Files created: {n}.</source>
         <translation>Фаза 1 завршена са {n_err} {error_word}. Фајлова креирано: {n}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="304"/>
+        <location filename="../gui/tabs/phase1.py" line="305"/>
         <source>Phase 1 completed with {n_warn} warning(s). Files created: {n}.</source>
         <translation>Фаза 1 завршена са {n_warn} упозорење/а. Фајлова креирано: {n}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="310"/>
+        <location filename="../gui/tabs/phase1.py" line="311"/>
         <source>Phase 1 completed successfully. {n} file(s) created.</source>
         <translation>Фаза 1 је успешно завршена. Креирано {n} фајлова.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="318"/>
+        <location filename="../gui/tabs/phase1.py" line="319"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="319"/>
+        <location filename="../gui/tabs/phase1.py" line="320"/>
         <source>Unexpected error: {error}</source>
         <translation>Неочекивана грешка: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="356"/>
+        <location filename="../gui/tabs/phase1.py" line="357"/>
         <source>Folder</source>
         <translation>Фасцикла</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="358"/>
+        <location filename="../gui/tabs/phase1.py" line="359"/>
         <source>Opened folder: {path}</source>
         <translation>Отворена фасцикла: {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="411"/>
+        <location filename="../gui/tabs/phase1.py" line="412"/>
         <source>Email client unavailable</source>
         <translation>Мејл клијент није доступан</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="416"/>
+        <location filename="../gui/tabs/phase1.py" line="417"/>
         <source>Error creating drafts</source>
         <translation>Грешка при креирању нацрта</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="417"/>
+        <location filename="../gui/tabs/phase1.py" line="418"/>
         <source>Error creating drafts:
 
 {error}</source>
@@ -98,12 +98,12 @@
 {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="425"/>
+        <location filename="../gui/tabs/phase1.py" line="426"/>
         <source>Drafts — partial</source>
         <translation>Нацрти — делимично</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="426"/>
+        <location filename="../gui/tabs/phase1.py" line="427"/>
         <source>Created {ok} draft(s), {n_failed} failed:
 
 {details}</source>
@@ -112,12 +112,12 @@
 {details}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="431"/>
+        <location filename="../gui/tabs/phase1.py" line="432"/>
         <source>Created {ok} draft(s); {n_failed} failed.</source>
         <translation>Креирано {ok} нацрт(а); {n_failed} није успело.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="437"/>
+        <location filename="../gui/tabs/phase1.py" line="438"/>
         <source>Created {ok} draft(s) in Outlook → Drafts. First opened for review.</source>
         <translation>Креирано {ok} нацрт(а) у Outlook → Drafts. Први је отворен за преглед.</translation>
     </message>
@@ -125,12 +125,12 @@
 <context>
     <name>CollapsibleSection</name>
     <message>
-        <location filename="../gui/widgets/collapsible_section.py" line="233"/>
+        <location filename="../gui/widgets/collapsible_section.py" line="234"/>
         <source>Hide</source>
         <translation>Сакриј</translation>
     </message>
     <message>
-        <location filename="../gui/widgets/collapsible_section.py" line="239"/>
+        <location filename="../gui/widgets/collapsible_section.py" line="240"/>
         <source>Show</source>
         <translation>Прикажи</translation>
     </message>
@@ -2034,16 +2034,21 @@ Continue?</source>
     </message>
     <message>
         <location filename="../gui/tabs/formalizator_tool.py" line="280"/>
+        <source>The downloaded file could not be verified as an official release, so it was deleted and not run. Please contact support.</source>
+        <translation>Преузета датотека није потврђена као званично издање, па је обрисана и није покренута. Јавите се подршци.</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/formalizator_tool.py" line="285"/>
         <source>This computer did not accept the server&apos;s certificate, so the download failed. See Diagnostics on the About page.</source>
         <translation>Овај рачунар није прихватио сертификат сервера, па преузимање није успело. Погледајте Дијагностику на страни О апликацији.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/formalizator_tool.py" line="285"/>
+        <location filename="../gui/tabs/formalizator_tool.py" line="290"/>
         <source>The Formalizator installer is not available on the server yet. Please contact support to obtain it.</source>
         <translation>Инсталација Formalizator-а још увек није доступна на серверу. Обратите се подршци да бисте је добили.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/formalizator_tool.py" line="288"/>
+        <location filename="../gui/tabs/formalizator_tool.py" line="293"/>
         <source>Download failed: {error}</source>
         <translation>Преузимање није успело: {error}</translation>
     </message>
@@ -2254,83 +2259,88 @@ Continue?</source>
         <translation>#{n}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="672"/>
+        <location filename="../gui/tabs/izmene.py" line="685"/>
         <source>{n} change(s) since RIK cut-off.</source>
         <translation>{n} измена(е) после рока РИК.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="673"/>
+        <location filename="../gui/tabs/izmene.py" line="686"/>
         <source>No post-RIK changes recorded.</source>
         <translation>Нема евидентираних измена после рока РИК.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="767"/>
-        <location filename="../gui/tabs/izmene.py" line="825"/>
+        <location filename="../gui/tabs/izmene.py" line="781"/>
+        <location filename="../gui/tabs/izmene.py" line="839"/>
         <source>— click a row above to select a BM —</source>
         <translation>— изаберите ред изнад да одаберете БМ —</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="805"/>
+        <location filename="../gui/tabs/izmene.py" line="819"/>
         <source>Select a row in the changes table to choose a BM. Original decision number and date are derived automatically.</source>
         <translation>Изаберите ред у табели измена да одаберете БМ. Број оригиналног решења и датум се одређују аутоматски.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="820"/>
+        <location filename="../gui/tabs/izmene.py" line="834"/>
         <source>Resolution details</source>
         <translation>Детаљи решења</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="827"/>
+        <location filename="../gui/tabs/izmene.py" line="841"/>
         <source>Polling station:</source>
         <translation>Бирачко место:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="830"/>
+        <location filename="../gui/tabs/izmene.py" line="844"/>
         <source>Original decision number:</source>
         <translation>Број оригиналног решења:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="833"/>
+        <location filename="../gui/tabs/izmene.py" line="847"/>
         <source>Original decision date:</source>
         <translation>Датум оригиналног решења:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="836"/>
+        <location filename="../gui/tabs/izmene.py" line="850"/>
         <source>Amendment sequence:</source>
         <translation>Редни број измене:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="843"/>
+        <location filename="../gui/tabs/izmene.py" line="857"/>
         <source>Date of the amendment decision</source>
         <translation>Датум решења о измени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="845"/>
+        <location filename="../gui/tabs/izmene.py" line="859"/>
         <source>Amendment date:</source>
         <translation>Датум измене:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="850"/>
+        <location filename="../gui/tabs/izmene.py" line="864"/>
         <source>Legal basis (Правни основ)</source>
         <translation>Правни основ</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="866"/>
+        <location filename="../gui/tabs/izmene.py" line="880"/>
         <source>Replaces the &apos;На основу…&apos; paragraph when non-empty. Saved per composition type.</source>
         <translation>Замењује пасус &apos;На основу…&apos; када није празно. Чува се по типу састава.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="875"/>
-        <location filename="../gui/tabs/izmene.py" line="958"/>
+        <location filename="../gui/tabs/izmene.py" line="889"/>
+        <location filename="../gui/tabs/izmene.py" line="972"/>
         <source>Reset to default</source>
         <translation>Врати на подразумевано</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="992"/>
+        <source>Open decisions folder…</source>
+        <translation>Отвори фасциклу решења…</translation>
     </message>
     <message>
         <source>Решења о давању овлашћења члана Комисије</source>
         <translation type="vanished">Решења о давању овлашћења члана Комисије</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="897"/>
+        <location filename="../gui/tabs/izmene.py" line="911"/>
         <source>Делегирано — овлашћено лице</source>
         <translation>Делегирано — овлашћено лице</translation>
     </message>
@@ -2339,7 +2349,7 @@ Continue?</source>
         <translation type="vanished">Непосредно — председник ОИК</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="883"/>
+        <location filename="../gui/tabs/izmene.py" line="897"/>
         <source>Овлашћење</source>
         <translation>Овлашћење</translation>
     </message>
@@ -2348,22 +2358,22 @@ Continue?</source>
         <translation type="vanished">ко потписује решења о изменама</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="900"/>
+        <location filename="../gui/tabs/izmene.py" line="914"/>
         <source>Off = Непосредно — председник ОИК signs directly, no authorized-person details needed below.</source>
         <translation>Искључено = Непосредно — председник ОИК потписује директно, детаљи овлашћеног лица испод нису потребни.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="905"/>
+        <location filename="../gui/tabs/izmene.py" line="919"/>
         <source>Off: Непосредно — председник ОИК</source>
         <translation>Искључено: Непосредно — председник ОИК</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="917"/>
+        <location filename="../gui/tabs/izmene.py" line="931"/>
         <source>Number of the authorization decision</source>
         <translation>Број решења о овлашћењу</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="919"/>
+        <location filename="../gui/tabs/izmene.py" line="933"/>
         <source>Authorization number:</source>
         <translation>Бр. одлуке о овлашћивању:</translation>
     </message>
@@ -2376,52 +2386,52 @@ Continue?</source>
         <translation type="vanished">Датум овлашћивања (у генитиву)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="922"/>
+        <location filename="../gui/tabs/izmene.py" line="936"/>
         <source>Date of authorization</source>
         <translation>Датум овлашћивања</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="924"/>
+        <location filename="../gui/tabs/izmene.py" line="938"/>
         <source>Authorization date:</source>
         <translation>Датум овлашћивања:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="927"/>
+        <location filename="../gui/tabs/izmene.py" line="941"/>
         <source>e.g. Ивана Тешић</source>
         <translation>нпр. Ивана Тешић</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="928"/>
+        <location filename="../gui/tabs/izmene.py" line="942"/>
         <source>Full name of the authorized person (nominative)</source>
         <translation>Пуно име овлашћеног лица (номинатив)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="930"/>
+        <location filename="../gui/tabs/izmene.py" line="944"/>
         <source>Authorized person:</source>
         <translation>Овлашћено лице:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="933"/>
+        <location filename="../gui/tabs/izmene.py" line="947"/>
         <source>e.g. заменик председника</source>
         <translation>нпр. заменик председника</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="934"/>
+        <location filename="../gui/tabs/izmene.py" line="948"/>
         <source>Role of the authorized person in OIK (lowercase)</source>
         <translation>Функција овлашћеног лица у ОИК (мала слова)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="936"/>
+        <location filename="../gui/tabs/izmene.py" line="950"/>
         <source>Role in OIK:</source>
         <translation>Функција у ОИК:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="945"/>
+        <location filename="../gui/tabs/izmene.py" line="959"/>
         <source>Образложење paragraphs</source>
         <translation>Пасуси образложења</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="955"/>
+        <location filename="../gui/tabs/izmene.py" line="969"/>
         <source>+ Add paragraph</source>
         <translation>+ Додај параграф</translation>
     </message>
@@ -2454,89 +2464,87 @@ Continue?</source>
         <translation type="vanished">Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="977"/>
         <source>Open folder</source>
-        <translation>Отвори фасциклу</translation>
+        <translation type="vanished">Отвори фасциклу</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="982"/>
         <source>Generate amendment decision…</source>
-        <translation>Генериши решење о измени…</translation>
+        <translation type="vanished">Генериши решење о измени…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1003"/>
+        <location filename="../gui/tabs/izmene.py" line="1031"/>
         <source>Amendments unavailable — generate decisions first (tab 4. Decisions).</source>
         <translation>Измене нису доступне — прво генеришите решења (таб 4. Решења).</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1007"/>
+        <location filename="../gui/tabs/izmene.py" line="1035"/>
         <source>Amendments unavailable — confirm submission to RIK first (tab 4. Decisions → &apos;Submitted to RIK&apos; button).</source>
         <translation>Измене нису доступне — прво потврдите предају РИК-у (таб 4. Решења → дугме &apos;Предато РИК-у&apos;).</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1047"/>
-        <location filename="../gui/tabs/izmene.py" line="1104"/>
+        <location filename="../gui/tabs/izmene.py" line="1075"/>
+        <location filename="../gui/tabs/izmene.py" line="1132"/>
         <source>Cannot save: {e}</source>
         <translation>Не могу да сачувам: {e}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1126"/>
+        <location filename="../gui/tabs/izmene.py" line="1154"/>
         <source>Cannot save образложење: {e}</source>
         <translation>Не могу да сачувам образложење: {e}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1206"/>
+        <location filename="../gui/tabs/izmene.py" line="1234"/>
         <source>Reset образложење</source>
         <translation>Поништи образложење</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1207"/>
+        <location filename="../gui/tabs/izmene.py" line="1235"/>
         <source>Reset all paragraphs to the built-in defaults for this composition type?</source>
         <translation>Вратити све пасусе на подразумеване вредности за овај тип састава?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1229"/>
-        <location filename="../gui/tabs/izmene.py" line="1516"/>
+        <location filename="../gui/tabs/izmene.py" line="1257"/>
+        <location filename="../gui/tabs/izmene.py" line="1544"/>
         <source>Fill in: {fields}</source>
         <translation>Попуните: {fields}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1515"/>
+        <location filename="../gui/tabs/izmene.py" line="1543"/>
         <source>Missing information</source>
         <translation>Недостаје податак</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1545"/>
+        <location filename="../gui/tabs/izmene.py" line="1573"/>
         <source>No BM selected</source>
         <translation>Није изабрано БМ</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1546"/>
+        <location filename="../gui/tabs/izmene.py" line="1574"/>
         <source>Click a row in the changes table to select a polling station.</source>
         <translation>Кликните на ред у табели измена да изаберете бирачко место.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1558"/>
+        <location filename="../gui/tabs/izmene.py" line="1586"/>
         <source>Missing configuration</source>
         <translation>Недостаје конфигурација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1559"/>
+        <location filename="../gui/tabs/izmene.py" line="1587"/>
         <source>Municipality name is not set. Fill in OIK Settings before generating.</source>
         <translation>Назив општине није подешен. Попуните Поставке ИК пре генерисања.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1570"/>
+        <location filename="../gui/tabs/izmene.py" line="1598"/>
         <source>No changes</source>
         <translation>Нема промена</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1571"/>
+        <location filename="../gui/tabs/izmene.py" line="1599"/>
         <source>No replacements recorded for BM {bm} in the corrections log. Make changes in the Corrections tab first.</source>
         <translation>У дневнику корекција нема евидентираних замена за БМ {bm}. Прво направите измене у картици корекција.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1586"/>
+        <location filename="../gui/tabs/izmene.py" line="1614"/>
         <source>Authorization number</source>
         <translation>Број овлашћења</translation>
     </message>
@@ -2545,22 +2553,22 @@ Continue?</source>
         <translation type="vanished">Датум овлашћења</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1587"/>
+        <location filename="../gui/tabs/izmene.py" line="1615"/>
         <source>Authorized person</source>
         <translation>Овлашћено лице</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1588"/>
+        <location filename="../gui/tabs/izmene.py" line="1616"/>
         <source>Role in OIK</source>
         <translation>Улога у ОИК</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1594"/>
+        <location filename="../gui/tabs/izmene.py" line="1622"/>
         <source>Missing authorization fields</source>
         <translation>Недостају поља овлашћења</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1595"/>
+        <location filename="../gui/tabs/izmene.py" line="1623"/>
         <source>Authorization is enabled but these fields are empty:
   • {fields}
 
@@ -2571,42 +2579,76 @@ Fill them in or select &apos;Непосредно&apos; above.</source>
 Попуните их или изаберите &apos;Непосредно&apos; изнад.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1527"/>
-        <location filename="../gui/tabs/izmene.py" line="1635"/>
+        <location filename="../gui/tabs/izmene.py" line="1555"/>
+        <location filename="../gui/tabs/izmene.py" line="1663"/>
         <source>Generation error</source>
         <translation>Грешка при генерисању</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="884"/>
+        <location filename="../gui/tabs/izmene.py" line="898"/>
         <source>ко потписује сва решења — стална, проширена, измене и престанак функције</source>
         <translation>ко потписује сва решења — стална, проширена, измене и престанак функције</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1532"/>
-        <location filename="../gui/tabs/izmene.py" line="1646"/>
+        <source>Export decisions…</source>
+        <translation type="vanished">Извези решења…</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="994"/>
+        <source>Copies every decision of this type to your export folder and opens it.</source>
+        <translation>Копира сва решења ове врсте у вашу фасциклу за извоз и отвара је.</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="1004"/>
+        <source>Refresh checks</source>
+        <translation>Освежи провере</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="1007"/>
+        <source>Run</source>
+        <translation>Покрени</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="1008"/>
+        <source>Generate the decision for the selected change</source>
+        <translation>Генерише решење за изабрану измену</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="1560"/>
+        <location filename="../gui/tabs/izmene.py" line="1674"/>
         <source>Decision saved: &lt;b&gt;{name}&lt;/b&gt;</source>
         <translation>Решење сачувано: &lt;b&gt;{name}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1536"/>
-        <location filename="../gui/tabs/izmene.py" line="1649"/>
+        <location filename="../gui/tabs/izmene.py" line="1564"/>
+        <location filename="../gui/tabs/izmene.py" line="1677"/>
         <source>Generated: {name}</source>
         <translation>Генерисано: {name}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1664"/>
+        <location filename="../gui/tabs/izmene.py" line="1698"/>
+        <source>Export</source>
+        <translation>Извоз</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="1699"/>
+        <source>Copied {n} of {total} decisions. Close any that are open in Word and check that the export folder is reachable, then try again.</source>
+        <translation>Копирано {n} од {total} решења. Затворите она која су отворена у Word-у и проверите да је фасцикла за извоз доступна, па покушајте поново.</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/izmene.py" line="1718"/>
         <source>Folder</source>
         <translation>Фасцикла</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1665"/>
+        <location filename="../gui/tabs/izmene.py" line="1719"/>
         <source>Output folder:
 {folder}</source>
         <translation>Излазна фасцикла:
 {folder}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/izmene.py" line="1669"/>
+        <location filename="../gui/tabs/izmene.py" line="1723"/>
         <source>Opened folder: {folder}</source>
         <translation>Отворена фасцикла: {folder}</translation>
     </message>
@@ -2845,7 +2887,7 @@ Save changes before leaving?</source>
         <translation>Уклони параграф</translation>
     </message>
     <message>
-        <location filename="../gui/widgets/obrazlozenje_card.py" line="142"/>
+        <location filename="../gui/widgets/obrazlozenje_card.py" line="143"/>
         <source>Paragraph text. **Bold** for bold text. Codes: {auth_ref}, {auth_name}, {auth_role}, {opstina}…</source>
         <translation>Текст параграфа. **Болд** за подебљан текст. Кодови: {auth_ref}, {auth_name}, {auth_role}, {opstina}…</translation>
     </message>
@@ -3480,7 +3522,7 @@ Move them to the new location?
 <context>
     <name>Phase1Tab</name>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="451"/>
+        <location filename="../gui/tabs/phase1.py" line="452"/>
         <source>Party File Generation</source>
         <translation>Генерисање фајлова за странке</translation>
     </message>
@@ -3501,32 +3543,32 @@ Move them to the new location?
         <translation type="vanished">Прави нацрте мејла по странци са одговарајућим .xlsx-ом као прилогом. Користи мејл клијент изабран у Поставке ИК → Систем.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="456"/>
+        <location filename="../gui/tabs/phase1.py" line="457"/>
         <source>1. Select the RIK template in OIK Settings (Working Template).  2. Click &apos;Run&apos;.  3. Send each generated .xlsx to the corresponding party.</source>
         <translation>1. Изаберите РИК шаблон у Поставке ИК (Радни шаблон).  2. Кликните „Покрени”.  3. Пошаљите сваки генерисани .xlsx одговарајућој странци.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="463"/>
+        <location filename="../gui/tabs/phase1.py" line="464"/>
         <source>Open export folder…</source>
         <translation>Отвори извозну фасциклу…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="474"/>
+        <location filename="../gui/tabs/phase1.py" line="475"/>
         <source>Send</source>
         <translation>Пошаљи</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="479"/>
+        <location filename="../gui/tabs/phase1.py" line="480"/>
         <source>Send to parties. Creates email drafts per party with the corresponding .xlsx as attachment. Uses the email client selected in OIK Settings → System.</source>
         <translation>Пошаљи странкама. Прави нацрте е-поште по странци са одговарајућим .xlsx у прилогу. Користи мejл клијент изабран у Поставке ИК → Систем.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="486"/>
+        <location filename="../gui/tabs/phase1.py" line="487"/>
         <source>No party has a valid email address — no drafts created.</source>
         <translation>Нема ниједне странке са валидном е-поштом — нацрти нису креирани.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="503"/>
+        <location filename="../gui/tabs/phase1.py" line="504"/>
         <source>This will:
   1. Delete all imported submissions for regular composition
   2. Generate new party files with a new identifier
@@ -3543,42 +3585,42 @@ Do you want to continue?</source>
 Да ли желите да наставите?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="544"/>
+        <location filename="../gui/tabs/phase1.py" line="545"/>
         <source>&lt;b&gt;Template:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;changed outside the application&lt;/span&gt; — resolve in Election Settings → Template.</source>
         <translation>&lt;b&gt;Шаблон:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;измењен изван апликације&lt;/span&gt; — решите у Подешавања избора → Шаблон.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="550"/>
+        <location filename="../gui/tabs/phase1.py" line="551"/>
         <source>{name} was changed outside the application since it was last verified ({when}). Resolve in Election Settings → Template before running.</source>
         <translation>{name} је измењен изван апликације од последње провере ({when}). Решите у Подешавања избора → Шаблон пре покретања.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="571"/>
+        <location filename="../gui/tabs/phase1.py" line="572"/>
         <source>Decisions submitted to RIK. This step is no longer needed for this cycle — further changes go through Corrections → Amendments.</source>
         <translation>Решења су предата РИК-у. Овај корак више није потребан у овом циклусу — даље измене иду кроз Корекције → Измене.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="582"/>
+        <location filename="../gui/tabs/phase1.py" line="583"/>
         <source>&lt;b&gt;Template:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;not set&lt;/span&gt; — open OIK Settings → Working Template.</source>
         <translation>&lt;b&gt;Шаблон:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;није подешен&lt;/span&gt; — отворите Поставке ИК → Радни шаблон.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="585"/>
+        <location filename="../gui/tabs/phase1.py" line="586"/>
         <source>Set up the template in OIK Settings.</source>
         <translation>Подесите шаблон у Поставкама ИК.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="589"/>
+        <location filename="../gui/tabs/phase1.py" line="590"/>
         <source>&lt;b&gt;Template:&lt;/b&gt; {path}</source>
         <translation>&lt;b&gt;Шаблон:&lt;/b&gt; {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="594"/>
+        <location filename="../gui/tabs/phase1.py" line="595"/>
         <source>Pre-flight checks passed — you can run Phase 1.</source>
         <translation>Прелиминарне провере су успеле — можете покренути Фазу 1.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="604"/>
+        <location filename="../gui/tabs/phase1.py" line="605"/>
         <source>Pre-flight has {n} {error_word}. Fix them and try again.</source>
         <translation>Прелиминарне провере имају {n} {error_word}. Поправите их и покушајте поново.</translation>
     </message>
@@ -3627,72 +3669,72 @@ Do you want to continue?</source>
         <translation type="vanished">Отвори фасциклу &apos;popunjeni&apos;…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="164"/>
+        <location filename="../gui/tabs/phase2.py" line="165"/>
         <source>Export consolidated table…</source>
         <translation>Извези збирну табелу…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="167"/>
+        <location filename="../gui/tabs/phase2.py" line="168"/>
         <source>Saves a copy of the consolidated table to a path you choose. The working copy in master/ is left untouched.</source>
         <translation>Чува копију збирне табеле на путањи коју изаберете. Радна копија у master/ остаје нетакнута.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="174"/>
+        <location filename="../gui/tabs/phase2.py" line="175"/>
         <source>Run</source>
         <translation>Покрени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="239"/>
+        <location filename="../gui/tabs/phase2.py" line="240"/>
         <source>The chief has taken over unfilled slots — party submissions are no longer accepted.</source>
         <translation>Начелник је преузео непопуњене слотове — пријаве странака се више не примају.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="249"/>
+        <location filename="../gui/tabs/phase2.py" line="250"/>
         <source>Submission deadline for regular composition: &lt;b&gt;{date}&lt;/b&gt;. After that date, empty slots are filled by the chief.</source>
         <translation>Рок за пријаву сталног састава: &lt;b&gt;{date}&lt;/b&gt;. После тог датума, празна места уноси начелник.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="303"/>
+        <location filename="../gui/tabs/phase2.py" line="304"/>
         <source>&lt;b&gt;Template:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;not set&lt;/span&gt; — open OIK Settings → Working Template.</source>
         <translation>&lt;b&gt;Шаблон:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;није подешен&lt;/span&gt; — отворите Поставке ИК → Радни шаблон.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="306"/>
+        <location filename="../gui/tabs/phase2.py" line="307"/>
         <source>Set up the template in OIK Settings.</source>
         <translation>Подесите шаблон у Поставкама ИК.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="309"/>
+        <location filename="../gui/tabs/phase2.py" line="310"/>
         <source>&lt;b&gt;Template:&lt;/b&gt; {path}</source>
         <translation>&lt;b&gt;Шаблон:&lt;/b&gt; {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="315"/>
+        <location filename="../gui/tabs/phase2.py" line="316"/>
         <source>Pre-flight checks passed.</source>
         <translation>Прелиминарне провере су прошле.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="324"/>
+        <location filename="../gui/tabs/phase2.py" line="325"/>
         <source>Pre-flight has {n} {error_word}.</source>
         <translation>Прелиминарне провере имају {n} {error_word}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="385"/>
+        <location filename="../gui/tabs/phase2.py" line="386"/>
         <source>Phase 2 complete. {n_files} file(s) loaded. Errors: {n_err}. Fix via corrections or resend to parties.</source>
         <translation>Фаза 2 завршена. Учитано {n_files} фајлова. Грешака: {n_err}. Поправите кроз корекције или поново послати странкама.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="392"/>
+        <location filename="../gui/tabs/phase2.py" line="393"/>
         <source>Phase 2 complete. {n_files} file(s) loaded. Warnings: {n_warn} (e.g. JMBG conflicts — resolve in Corrections).</source>
         <translation>Фаза 2 завршена. Учитано {n_files} фајлова. Упозорења: {n_warn} (нпр. конфликти ЈМБГ — реши се у Корекцијама).</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="397"/>
+        <location filename="../gui/tabs/phase2.py" line="398"/>
         <source>Phase 2 completed successfully. Consolidated table saved.</source>
         <translation>Фаза 2 је успешно завршена. Збирна табела сачувана.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="575"/>
+        <location filename="../gui/tabs/phase2.py" line="576"/>
         <source>The consolidated table (zbirana_tabela.xlsx) is currently open in Excel and the program cannot write the updated content.
 
 Close the file in Excel and re-run Phase 2.</source>
@@ -3701,39 +3743,39 @@ Close the file in Excel and re-run Phase 2.</source>
 Затворите фајл у Excel-у и поново покрените Фазу 2.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="579"/>
+        <location filename="../gui/tabs/phase2.py" line="580"/>
         <source>Excel holds the file</source>
         <translation>Excel држи фајл</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="582"/>
+        <location filename="../gui/tabs/phase2.py" line="583"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="583"/>
+        <location filename="../gui/tabs/phase2.py" line="584"/>
         <source>Unexpected error: {error}</source>
         <translation>Неочекивана грешка: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="604"/>
+        <location filename="../gui/tabs/phase2.py" line="605"/>
         <source>Export</source>
         <translation>Извоз</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="605"/>
+        <location filename="../gui/tabs/phase2.py" line="606"/>
         <source>Consolidated table does not exist. Run Phase 2.</source>
         <translation>Збирна табела не постоји. Покрените Фазу 2.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="613"/>
+        <location filename="../gui/tabs/phase2.py" line="614"/>
         <source>Export consolidated table</source>
         <translation>Извези збирну табелу</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="545"/>
-        <location filename="../gui/tabs/phase2.py" line="614"/>
-        <location filename="../gui/tabs/phase2.py" line="638"/>
+        <location filename="../gui/tabs/phase2.py" line="546"/>
+        <location filename="../gui/tabs/phase2.py" line="615"/>
+        <location filename="../gui/tabs/phase2.py" line="639"/>
         <source>Excel files (*.xlsx)</source>
         <translation>Excel фајлови (*.xlsx)</translation>
     </message>
@@ -3768,46 +3810,46 @@ Close the file in Excel and re-run Phase 2.</source>
         <translation>Само у пробном режиму: попуњава фајлове странака из корака 1 измишљеним лицима (са два намерна конфликта) и увози их, да бисте остатак поступка испробали на својим бирачким местима и странкама.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="233"/>
-        <location filename="../gui/tabs/phase2.py" line="292"/>
+        <location filename="../gui/tabs/phase2.py" line="234"/>
+        <location filename="../gui/tabs/phase2.py" line="293"/>
         <source>Decisions submitted to RIK. This step is no longer needed for this cycle — further changes go through Corrections → Amendments.</source>
         <translation>Решења су предата РИК-у. Овај корак више није потребан у овом циклусу — даље измене иду кроз Корекције → Измене.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="271"/>
+        <location filename="../gui/tabs/phase2.py" line="272"/>
         <source>&lt;b&gt;Template:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;changed outside the application&lt;/span&gt; — resolve in Election Settings → Template.</source>
         <translation>&lt;b&gt;Шаблон:&lt;/b&gt; &lt;span style=&apos;color:#9B0000&apos;&gt;измењен изван апликације&lt;/span&gt; — решите у Подешавања избора → Шаблон.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="277"/>
+        <location filename="../gui/tabs/phase2.py" line="278"/>
         <source>{name} was changed outside the application since it was last verified ({when}). Resolve in Election Settings → Template before running.</source>
         <translation>{name} је измењен изван апликације од последње провере ({when}). Решите у Подешавања избора → Шаблон пре покретања.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="419"/>
+        <location filename="../gui/tabs/phase2.py" line="420"/>
         <source>No email client found (Outlook or Thunderbird).
 Configure the email client in OIK Settings → System and try again.</source>
         <translation>Мејл клијент није пронађен (Outlook или Thunderbird).
 Конфигуришите мејл клијент у Поставке ИК → Систем и покушајте поново.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="438"/>
+        <location filename="../gui/tabs/phase2.py" line="439"/>
         <source>Corrections needed — submission for BM</source>
         <translation>Потребне исправке — пријава за БМ</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="449"/>
-        <location filename="../gui/tabs/phase2.py" line="455"/>
+        <location filename="../gui/tabs/phase2.py" line="450"/>
+        <location filename="../gui/tabs/phase2.py" line="456"/>
         <source>(unknown)</source>
         <translation>(непознато)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="461"/>
+        <location filename="../gui/tabs/phase2.py" line="462"/>
         <source>(no name entered)</source>
         <translation>(име није унето)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="466"/>
+        <location filename="../gui/tabs/phase2.py" line="467"/>
         <source>Dear Sir/Madam,
 
 The following issues were found in your submitted file:
@@ -3820,7 +3862,7 @@ The following issues were found in your submitted file:
 </translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="470"/>
+        <location filename="../gui/tabs/phase2.py" line="471"/>
         <source>
 
 Please correct the above and resubmit the file.
@@ -3835,53 +3877,53 @@ Municipal Election Commission</source>
 Општинска изборна комисија</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="481"/>
+        <location filename="../gui/tabs/phase2.py" line="482"/>
         <source>No drafts created</source>
         <translation>Ниједан драфт није направљен</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="483"/>
+        <location filename="../gui/tabs/phase2.py" line="484"/>
         <source>No party with errors has both a configured email address and a submitted file on record.</source>
         <translation>Ниједна странка са грешкама нема истовремено подешену мејл адресу и евидентиран поднети фајл.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="508"/>
+        <location filename="../gui/tabs/phase2.py" line="509"/>
         <source>Created {n} reply draft(s).</source>
         <translation>Направљено {n} драфт(ова) повратног мејла.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="510"/>
+        <location filename="../gui/tabs/phase2.py" line="511"/>
         <source>{n} failed.</source>
         <translation>{n} неуспешно.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="513"/>
+        <location filename="../gui/tabs/phase2.py" line="514"/>
         <source>No email on file for: {parties}.</source>
         <translation>Нема мејл адресе за: {parties}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="519"/>
+        <location filename="../gui/tabs/phase2.py" line="520"/>
         <source>No submitted file on record for: {parties}.</source>
         <translation>Нема евидентираног поднетог фајла за: {parties}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="544"/>
+        <location filename="../gui/tabs/phase2.py" line="545"/>
         <source>Export errors</source>
         <translation>Извоз грешака</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="553"/>
-        <location filename="../gui/tabs/phase2.py" line="622"/>
+        <location filename="../gui/tabs/phase2.py" line="554"/>
+        <location filename="../gui/tabs/phase2.py" line="623"/>
         <source>Export failed</source>
         <translation>Извоз није успео</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="554"/>
+        <location filename="../gui/tabs/phase2.py" line="555"/>
         <source>Cannot write file: {error}</source>
         <translation>Не могу да упишем фајл: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="558"/>
+        <location filename="../gui/tabs/phase2.py" line="559"/>
         <source>Exported {n} error row(s) to: {path}</source>
         <translation>Извезено {n} ред(ова) грешака у: {path}</translation>
     </message>
@@ -3890,43 +3932,43 @@ Municipal Election Commission</source>
         <translation type="vanished">Не могу да копирам: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="626"/>
+        <location filename="../gui/tabs/phase2.py" line="627"/>
         <source>Consolidated table exported to: {path}</source>
         <translation>Збирна табела извезена у: {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="637"/>
+        <location filename="../gui/tabs/phase2.py" line="638"/>
         <source>Select .xlsx files to import</source>
         <translation>Изаберите .xlsx фајлове за увоз</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="657"/>
+        <location filename="../gui/tabs/phase2.py" line="658"/>
         <source>Sample data</source>
         <translation>Пробни подаци</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="658"/>
+        <location filename="../gui/tabs/phase2.py" line="659"/>
         <source>Generate the party files first (tab 1).</source>
         <translation>Прво генеришите фајлове за странке (таб 1).</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="679"/>
+        <location filename="../gui/tabs/phase2.py" line="680"/>
         <source>Election Configuration</source>
         <translation>Изборна конфигурација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="681"/>
-        <location filename="../gui/tabs/phase2.py" line="846"/>
+        <location filename="../gui/tabs/phase2.py" line="682"/>
+        <location filename="../gui/tabs/phase2.py" line="847"/>
         <source>Election configuration has no identifier set. Save the Election Configuration and try again.</source>
         <translation>Изборна конфигурација нема постављен идентификатор. Сачувајте Изборну конфигурацију и покушајте поново.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="724"/>
+        <location filename="../gui/tabs/phase2.py" line="725"/>
         <source>Submission after deadline</source>
         <translation>Пријава после рока</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="726"/>
+        <location filename="../gui/tabs/phase2.py" line="727"/>
         <source>File «{name}» has timestamp {recv_date}, but the submission deadline was {cutoff}.
 
 You may continue if you are certain the party submitted on time outside the email channel.
@@ -3939,17 +3981,17 @@ Do you want to continue with the import?</source>
 Да ли желите да наставите са увозом?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="750"/>
+        <location filename="../gui/tabs/phase2.py" line="751"/>
         <source>Submission after deadline ({recv_date} &gt; {cutoff}). Rejected at operator request.</source>
         <translation>Пријава после рока ({recv_date} &gt; {cutoff}). Одбачено на захтев оператора.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="768"/>
+        <location filename="../gui/tabs/phase2.py" line="769"/>
         <source>Resubmission — corrections will be overwritten</source>
         <translation>Поновна пријава — поништавање исправки</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="770"/>
+        <location filename="../gui/tabs/phase2.py" line="771"/>
         <source>Party «{party}» has previously submitted representatives and there are {n} manual corrections for that party.
 
 The new submission will overwrite those corrections on the next consolidation run.
@@ -3962,17 +4004,17 @@ Do you want to continue?</source>
 Да ли желите да наставите?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="811"/>
+        <location filename="../gui/tabs/phase2.py" line="812"/>
         <source>Imported: {ok}, rejected: {n_rej}. See details in the error table.</source>
         <translation>Увезено: {ok}, одбачено {n_rej}. Погледајте детаље у табели грешака.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="820"/>
+        <location filename="../gui/tabs/phase2.py" line="821"/>
         <source>Import — rejected files</source>
         <translation>Увоз — одбачени фајлови</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="821"/>
+        <location filename="../gui/tabs/phase2.py" line="822"/>
         <source>{n} file(s) were rejected during import:
 
 {details}</source>
@@ -3981,33 +4023,33 @@ Do you want to continue?</source>
 {details}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="826"/>
+        <location filename="../gui/tabs/phase2.py" line="827"/>
         <source>Imported: {n} submission(s).</source>
         <translation>Увезено: {n} пријава.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="844"/>
+        <location filename="../gui/tabs/phase2.py" line="845"/>
         <source>Import</source>
         <translation>Увоз</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="855"/>
+        <location filename="../gui/tabs/phase2.py" line="856"/>
         <source>Reading inbox…</source>
         <translation>Читање Inbox-а…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="417"/>
-        <location filename="../gui/tabs/phase2.py" line="882"/>
+        <location filename="../gui/tabs/phase2.py" line="418"/>
+        <location filename="../gui/tabs/phase2.py" line="883"/>
         <source>Email client unavailable</source>
         <translation>Мејл клијент није доступан</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="623"/>
+        <location filename="../gui/tabs/phase2.py" line="624"/>
         <source>Cannot write export: {error}</source>
         <translation>Уписивање извоза није успело: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="883"/>
+        <location filename="../gui/tabs/phase2.py" line="884"/>
         <source>{error}
 
 Use &apos;Import files…&apos; to manually select .xlsx files.</source>
@@ -4016,12 +4058,12 @@ Use &apos;Import files…&apos; to manually select .xlsx files.</source>
 Користите &apos;Увези фајлове…&apos; да ручно изаберете .xlsx фајлове.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="890"/>
+        <location filename="../gui/tabs/phase2.py" line="891"/>
         <source>Error reading inbox</source>
         <translation>Грешка при читању Inbox-а</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="891"/>
+        <location filename="../gui/tabs/phase2.py" line="892"/>
         <source>Error reading inbox:
 
 {error}</source>
@@ -4030,22 +4072,22 @@ Use &apos;Import files…&apos; to manually select .xlsx files.</source>
 {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="893"/>
+        <location filename="../gui/tabs/phase2.py" line="894"/>
         <source>Error reading inbox.</source>
         <translation>Грешка при читању Inbox-а.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="972"/>
+        <location filename="../gui/tabs/phase2.py" line="973"/>
         <source>Email received {recv_date} — deadline was {cutoff}. File moved to rejected.</source>
         <translation>Мејл примљен {recv_date} — рок је истекао {cutoff}. Фајл је премештен у одбијено.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="1005"/>
+        <location filename="../gui/tabs/phase2.py" line="1006"/>
         <source>Email import — rejected attachments</source>
         <translation>Увоз из Outlook-а — одбачени прилози</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="1006"/>
+        <location filename="../gui/tabs/phase2.py" line="1007"/>
         <source>{n} attachment(s) rejected:
 
 {details}</source>
@@ -4054,12 +4096,12 @@ Use &apos;Import files…&apos; to manually select .xlsx files.</source>
 {details}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="1011"/>
+        <location filename="../gui/tabs/phase2.py" line="1012"/>
         <source>From email imported: {ok}, rejected: {n_rej}.</source>
         <translation>Из Outlook-а увезено: {ok}, одбачено {n_rej}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase2.py" line="1017"/>
+        <location filename="../gui/tabs/phase2.py" line="1018"/>
         <source>From email imported {n} submission(s).</source>
         <translation>Из Outlook-а увезено {n} пријава.</translation>
     </message>
@@ -4160,7 +4202,7 @@ The sub-number increments by 1 per polling station.</source>
     </message>
     <message>
         <location filename="../gui/tabs/phase3.py" line="201"/>
-        <location filename="../gui/tabs/phase3.py" line="477"/>
+        <location filename="../gui/tabs/phase3.py" line="478"/>
         <source>Reset to default</source>
         <translation>Врати на подразумевано</translation>
     </message>
@@ -4193,68 +4235,68 @@ The sub-number increments by 1 per polling station.</source>
         <translation>Пошаљи решења члановима. Прави Outlook/Thunderbird нацрт по члану са одговарајућим решењем (.docx) у прилогу. Ради само за чланове са унетом е-поштом. Нацрти се НЕ шаљу аутоматски.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="274"/>
+        <location filename="../gui/tabs/phase3.py" line="275"/>
         <source>Refresh checks</source>
         <translation>Освежи провере</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="277"/>
+        <location filename="../gui/tabs/phase3.py" line="278"/>
         <source>Run</source>
         <translation>Покрени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="281"/>
+        <location filename="../gui/tabs/phase3.py" line="282"/>
         <source>Submitted to RIK</source>
         <translation>Предато РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="284"/>
+        <location filename="../gui/tabs/phase3.py" line="285"/>
         <source>Marks decisions as submitted to RIK. After this step Phase 3
 cannot be re-run — corrections go through the Amendments tab.</source>
         <translation>Означава решења као предата РИК-у. Након овог корака Фаза 3
 не може поново да се покрене — исправке иду кроз таб Измене.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="290"/>
+        <location filename="../gui/tabs/phase3.py" line="291"/>
         <source>Withdraw submission</source>
         <translation>Повуци предају</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="292"/>
+        <location filename="../gui/tabs/phase3.py" line="293"/>
         <source>Cancels the &apos;Submitted to RIK&apos; status. Available only if no amendment decisions have been issued.</source>
         <translation>Поништава статус &apos;Предато РИК-у&apos;. Доступно само ако нису издата решења о измени.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="478"/>
+        <location filename="../gui/tabs/phase3.py" line="479"/>
         <source>The current rationale text will be replaced with the standard legal text. Continue?</source>
         <translation>Тренутни текст образложења биће замењен стандардним законским текстом. Наставити?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="550"/>
-        <location filename="../gui/tabs/phase3.py" line="607"/>
-        <location filename="../gui/tabs/phase3.py" line="1236"/>
-        <location filename="../gui/tabs/phase3.py" line="1351"/>
+        <location filename="../gui/tabs/phase3.py" line="551"/>
+        <location filename="../gui/tabs/phase3.py" line="608"/>
+        <location filename="../gui/tabs/phase3.py" line="1237"/>
+        <location filename="../gui/tabs/phase3.py" line="1352"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="550"/>
-        <location filename="../gui/tabs/phase3.py" line="607"/>
+        <location filename="../gui/tabs/phase3.py" line="551"/>
+        <location filename="../gui/tabs/phase3.py" line="608"/>
         <source>Cannot save: {error}</source>
         <translation>Не могу да сачувам: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1047"/>
+        <location filename="../gui/tabs/phase3.py" line="1048"/>
         <source>Decisions submitted to RIK. Corrections go through the Amendments tab.</source>
         <translation>Решења предата РИК-у. Исправке иду кроз таб Измене.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1068"/>
+        <location filename="../gui/tabs/phase3.py" line="1069"/>
         <source>Consolidated table does not exist. Run Phase 2.</source>
         <translation>Збирна табела не постоји. Покрените Фазу 2.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1057"/>
+        <location filename="../gui/tabs/phase3.py" line="1058"/>
         <source>{name} was changed outside the application since it was last verified ({when}). Resolve in Corrections before generating decisions.</source>
         <translation>{name} је измењен изван апликације од последње провере ({when}). Решите у Корекцијама пре генерисања решења.</translation>
     </message>
@@ -4283,37 +4325,37 @@ cannot be re-run — corrections go through the Amendments tab.</source>
         <translation type="vanished">Размак текста после:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1083"/>
+        <location filename="../gui/tabs/phase3.py" line="1084"/>
         <source>{n} slot(s) not filled. Edit via Phase 2.5 or mark as chief appointment before generating decisions.</source>
         <translation>{n} места нису попуњена. Уредите кроз Фазу 2.5 или означите као именовање начелником пре генерисања решења.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1096"/>
+        <location filename="../gui/tabs/phase3.py" line="1097"/>
         <source>Pre-flight has {n} {error_word}.</source>
         <translation>Прелиминарне провере имају {n} {error_word}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1101"/>
+        <location filename="../gui/tabs/phase3.py" line="1102"/>
         <source>Pre-flight: {n} warning(s). You can run Phase 3.</source>
         <translation>Прелиминарне провере: {n} упозорење/а. Можете покренути Фазу 3.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1105"/>
+        <location filename="../gui/tabs/phase3.py" line="1106"/>
         <source>All checks passed. You can run Phase 3.</source>
         <translation>Све провере прошле. Можете покренути Фазу 3.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1125"/>
+        <location filename="../gui/tabs/phase3.py" line="1126"/>
         <source>No data in the consolidated table.</source>
         <translation>Нема података у збирној табели.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1171"/>
+        <location filename="../gui/tabs/phase3.py" line="1172"/>
         <source>Decisions edited by hand</source>
         <translation>Решења мењана ручно</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1173"/>
+        <location filename="../gui/tabs/phase3.py" line="1174"/>
         <source>{n} decision(s) were changed after they were generated (e.g. edited in Word):
 
 {names}
@@ -4326,22 +4368,22 @@ Overwrite them with freshly generated ones, or keep your edits?</source>
 Да ли да их замените новогенерисаним или да задржите своје измене?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1177"/>
+        <location filename="../gui/tabs/phase3.py" line="1178"/>
         <source>Overwrite all</source>
         <translation>Пресними све</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1178"/>
+        <location filename="../gui/tabs/phase3.py" line="1179"/>
         <source>Keep edited</source>
         <translation>Задржи измењена</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1221"/>
+        <location filename="../gui/tabs/phase3.py" line="1222"/>
         <source>Phase 3 completed with {n} {error_word}.</source>
         <translation>Фаза 3 завршена са {n} {error_word}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1225"/>
+        <location filename="../gui/tabs/phase3.py" line="1226"/>
         <source>Generated {n} decision(s) with {w} warning(s).</source>
         <translation>Генерисано {n} решење(а) са {w} упозорење(а).</translation>
     </message>
@@ -4350,47 +4392,47 @@ Overwrite them with freshly generated ones, or keep your edits?</source>
         <translation type="vanished">Готово! Генерисано {n} решење(а) у resenja\.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1229"/>
+        <location filename="../gui/tabs/phase3.py" line="1230"/>
         <source>Done! Generated {n} decision(s).</source>
         <translation>Готово! Генерисано {n} решења.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1237"/>
+        <location filename="../gui/tabs/phase3.py" line="1238"/>
         <source>Unexpected error: {error}</source>
         <translation>Неочекивана грешка: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1256"/>
+        <location filename="../gui/tabs/phase3.py" line="1257"/>
         <source>File changed outside the application — see Corrections.</source>
         <translation>Фајл је измењен изван апликације — погледајте Корекције.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1269"/>
+        <location filename="../gui/tabs/phase3.py" line="1270"/>
         <source>{n} of {total} members have email</source>
         <translation>{n} од {total} чланова имају е-пошту</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1271"/>
+        <location filename="../gui/tabs/phase3.py" line="1272"/>
         <source>{n} without</source>
         <translation>{n} без е-поште</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1286"/>
+        <location filename="../gui/tabs/phase3.py" line="1287"/>
         <source>{name} was changed outside the application — resolve in Corrections before sending.</source>
         <translation>{name} је измењен изван апликације — решите у Корекцијама пре слања.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1293"/>
+        <location filename="../gui/tabs/phase3.py" line="1294"/>
         <source>No members with email.</source>
         <translation>Нема чланова са е-поштом.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1332"/>
+        <location filename="../gui/tabs/phase3.py" line="1333"/>
         <source>Missing files</source>
         <translation>Недостају фајлови</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1333"/>
+        <location filename="../gui/tabs/phase3.py" line="1334"/>
         <source>The following decision files were not found:
 {files}
 
@@ -4401,12 +4443,12 @@ Run Phase 3 first, then send.</source>
 Прво покрените Фазу 3, затим шаљите.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1347"/>
+        <location filename="../gui/tabs/phase3.py" line="1348"/>
         <source>Email client unavailable</source>
         <translation>Мејл клијент није доступан</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1351"/>
+        <location filename="../gui/tabs/phase3.py" line="1352"/>
         <source>Error creating drafts:
 
 {error}</source>
@@ -4415,12 +4457,12 @@ Run Phase 3 first, then send.</source>
 {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1359"/>
+        <location filename="../gui/tabs/phase3.py" line="1360"/>
         <source>Drafts — partial</source>
         <translation>нацрти — делимично</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1360"/>
+        <location filename="../gui/tabs/phase3.py" line="1361"/>
         <source>Created {ok} draft(s), {n_failed} failed:
 
 {details}</source>
@@ -4429,22 +4471,22 @@ Run Phase 3 first, then send.</source>
 {details}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1362"/>
+        <location filename="../gui/tabs/phase3.py" line="1363"/>
         <source>Created {ok} draft(s); {n_failed} failed.</source>
         <translation>Креирано {ok} нацрт(а); {n_failed} није успело.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1365"/>
+        <location filename="../gui/tabs/phase3.py" line="1366"/>
         <source>Created {n} draft(s) for members. Review before sending.</source>
         <translation>Креирано {n} нацрт(а) за чланове. Прегледати пре слања.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1383"/>
+        <location filename="../gui/tabs/phase3.py" line="1384"/>
         <source>Submit decisions to RIK</source>
         <translation>Предај решења РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1385"/>
+        <location filename="../gui/tabs/phase3.py" line="1386"/>
         <source>By checking this action you confirm that the decisions have been submitted to RIK.
 
 After this step:
@@ -4465,37 +4507,37 @@ This action is reversible only if no amendment decisions have been issued.</sour
 Ова акција може бити опозвана само ако нису издата решења о измени.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1393"/>
+        <location filename="../gui/tabs/phase3.py" line="1394"/>
         <source>I understand — decisions have been submitted to RIK</source>
         <translation>Разумем — решења су предата РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1394"/>
+        <location filename="../gui/tabs/phase3.py" line="1395"/>
         <source>Confirm</source>
         <translation>Потврди</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1395"/>
+        <location filename="../gui/tabs/phase3.py" line="1396"/>
         <source>Cancel</source>
         <translation>Откажи</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1415"/>
+        <location filename="../gui/tabs/phase3.py" line="1416"/>
         <source>Cannot withdraw</source>
         <translation>Не може се повући</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1416"/>
+        <location filename="../gui/tabs/phase3.py" line="1417"/>
         <source>Amendment decisions exist. The submission cannot be withdrawn.</source>
         <translation>Решења о измени постоје. Предаја не може бити повучена.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1420"/>
+        <location filename="../gui/tabs/phase3.py" line="1421"/>
         <source>Withdraw RIK submission</source>
         <translation>Повуци предају РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1421"/>
+        <location filename="../gui/tabs/phase3.py" line="1422"/>
         <source>Do you want to withdraw the &apos;Submitted to RIK&apos; status?
 
 Phase 3 will become available again.</source>
@@ -4504,17 +4546,17 @@ Phase 3 will become available again.</source>
 Фаза 3 ће поново постати доступна.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1427"/>
+        <location filename="../gui/tabs/phase3.py" line="1428"/>
         <source>&apos;Submitted to RIK&apos; status has been withdrawn.</source>
         <translation>Статус &apos;Предато РИК-у&apos; је повучен.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1439"/>
+        <location filename="../gui/tabs/phase3.py" line="1440"/>
         <source>Could not open the folder. It is at: {path}</source>
         <translation>Фасцикла није могла да се отвори. Налази се на: {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1442"/>
+        <location filename="../gui/tabs/phase3.py" line="1443"/>
         <source>Opened folder: {path}</source>
         <translation>Отворена фасцикла: {path}</translation>
     </message>
@@ -4735,12 +4777,12 @@ Phase 3 will become available again.</source>
 <context>
     <name>ProsireniPhase1Tab</name>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="635"/>
+        <location filename="../gui/tabs/phase1.py" line="636"/>
         <source>Candidate List Generation</source>
         <translation>Генерисање листа кандидата</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="640"/>
+        <location filename="../gui/tabs/phase1.py" line="641"/>
         <source>Generates one .xlsx file per list from the candidacies registry
 (Elections → Candidates). Each list file contains rows for
 Member + Deputy member for each polling station.</source>
@@ -4749,7 +4791,7 @@ Member + Deputy member for each polling station.</source>
 Члан + Заменик члана за свако бирачко место.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="647"/>
+        <location filename="../gui/tabs/phase1.py" line="648"/>
         <source>Open folder…</source>
         <translation>Отвори фасциклу…</translation>
     </message>
@@ -4762,22 +4804,22 @@ Member + Deputy member for each polling station.</source>
         <translation type="vanished">Прави нацрте мејла по листи са одговарајућим .xlsx-ом као прилогом. Користи мејл клијент изабран у Поставке ИК → Систем.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="655"/>
+        <location filename="../gui/tabs/phase1.py" line="656"/>
         <source>Send</source>
         <translation>Пошаљи</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="660"/>
+        <location filename="../gui/tabs/phase1.py" line="661"/>
         <source>Send to lists. Creates email drafts per list with the corresponding .xlsx as attachment. Uses the email client selected in OIK Settings → System.</source>
         <translation>Пошаљи листама. Прави нацрте е-поште по листи са одговарајућим .xlsx у прилогу. Користи мejл клијент изабран у Поставке ИК → Систем.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="667"/>
+        <location filename="../gui/tabs/phase1.py" line="668"/>
         <source>No list has a valid email address — no drafts created.</source>
         <translation>Нема ниједне листе са валидном е-поштом — нацрти нису креирани.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="684"/>
+        <location filename="../gui/tabs/phase1.py" line="685"/>
         <source>This will:
   1. Delete all imported submissions for extended composition
   2. Generate new list files with a new identifier
@@ -4794,12 +4836,12 @@ Do you want to continue?</source>
 Да ли желите да наставите?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="718"/>
+        <location filename="../gui/tabs/phase1.py" line="719"/>
         <source>Candidacy registry is empty. Add lists in Elections → Candidates before running Phase 1.</source>
         <translation>Регистар кандидатура је празан. Унесите листе у Избори → Кандидати пре покретања Фазе 1.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase1.py" line="722"/>
+        <location filename="../gui/tabs/phase1.py" line="723"/>
         <source>No polling stations configured in OIK Settings.</source>
         <translation>Нема бирачких места у поставкама ОИК.</translation>
     </message>
@@ -4807,27 +4849,27 @@ Do you want to continue?</source>
 <context>
     <name>ProsireniWorkspace</name>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="547"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="548"/>
         <source>1. Templates</source>
         <translation>1. Листе</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="548"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="549"/>
         <source>2. Aggregation</source>
         <translation>2. Обједињавање</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="550"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="551"/>
         <source>3. Corrections</source>
         <translation>3. Корекције</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="551"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="552"/>
         <source>4. Decisions</source>
         <translation>4. Решења</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="562"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="563"/>
         <source>5. Amendments</source>
         <translation>5. Измене</translation>
     </message>
@@ -4836,12 +4878,12 @@ Do you want to continue?</source>
         <translation type="vanished">6. Престанак функције</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="588"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="589"/>
         <source>No electoral lists are registered yet. Phases 1 and 2 cannot run until at least one list is added under Elections → Candidates.</source>
         <translation>Још увек није уписана ниједна изборна листа. Фазе 1 и 2 не могу да се покрену док се не дода бар једна листа у Избори → Кандидати.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="601"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="602"/>
         <source>Decisions have been submitted to RIK. Further corrections are made through Corrections (auto-generate amendments).</source>
         <translation>Решења су предата РИК-у. Даље исправке врше се кроз Корекције (аутоматски генеришу измене).</translation>
     </message>
@@ -6970,39 +7012,39 @@ Correct the JMBG, or first remove that person from {composition}.</source>
         <translation>Увоз из е-поште. Претражује пријемно сандуче изабраног мejл клијента (Outlook / Thunderbird) и увози .xlsx прилоге са званичном временском ознаком пријема.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="97"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="98"/>
         <source>Run</source>
         <translation>Покрени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="102"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="103"/>
         <source>Open master table…</source>
         <translation>Отвори збирну табелу…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="140"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="141"/>
         <source>Import entity files</source>
         <translation>Увези фајлове ентитета</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="151"/>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="276"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="152"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="277"/>
         <source>Import</source>
         <translation>Увоз</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="153"/>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="278"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="154"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="279"/>
         <source>Election configuration has no identifier set. Save the election configuration and try again.</source>
         <translation>Изборна конфигурација нема постављен идентификатор. Сачувајте Изборну конфигурацију и покушајте поново.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="189"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="190"/>
         <source>Late submission</source>
         <translation>Пријава после рока</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="191"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="192"/>
         <source>File «{name}» has a timestamp of {recv_date}, but the submission deadline for the extended composition has passed on {cutoff}.
 
 You may continue if you are certain the entity submitted the file on time through a non-email channel.
@@ -7015,22 +7057,22 @@ Do you want to continue with the import?</source>
 Да ли желите да наставите са увозом?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="219"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="220"/>
         <source>Late submission ({recv_date} &gt; {cutoff}). Rejected at operator request.</source>
         <translation>Пријава после рока ({recv_date} &gt; {cutoff}). Одбачено на захтев оператора.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="248"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="249"/>
         <source>Imported: {imported}, rejected {rejected}. See details in the error table.</source>
         <translation>Увезено: {imported}, одбачено {rejected}. Погледајте детаље у табели грешака.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="255"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="256"/>
         <source>Import — rejected files</source>
         <translation>Увоз — одбачени фајлови</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="256"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="257"/>
         <source>{n} file(s) rejected during import:
 
 {details}</source>
@@ -7039,17 +7081,17 @@ Do you want to continue with the import?</source>
 {details}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="262"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="263"/>
         <source>Imported: {n} submissions.</source>
         <translation>Увезено: {n} пријава.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="294"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="295"/>
         <source>Email client unavailable</source>
         <translation>Мејл клијент није доступан</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="295"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="296"/>
         <source>{error}
 
 Use &apos;Import files…&apos; to manually select .xlsx files.</source>
@@ -7058,12 +7100,12 @@ Use &apos;Import files…&apos; to manually select .xlsx files.</source>
 Користите &apos;Увези фајлове…&apos; да ручно изаберете .xlsx фајлове.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="303"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="304"/>
         <source>Error reading Inbox</source>
         <translation>Грешка при читању Inbox-а</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="304"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="305"/>
         <source>Error reading Inbox:
 
 {error}</source>
@@ -7072,17 +7114,17 @@ Use &apos;Import files…&apos; to manually select .xlsx files.</source>
 {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="361"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="362"/>
         <source>Email received {recv_date} — deadline passed on {cutoff}. File moved to rejected folder.</source>
         <translation>Мејл примљен {recv_date} — рок је истекао {cutoff}. Фајл је премештен у одбијено.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="382"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="383"/>
         <source>Import from email — rejected attachments</source>
         <translation>Увоз из Outlook-а — одбачени прилози</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="383"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="384"/>
         <source>{n} attachment(s) rejected:
 
 {details}</source>
@@ -7091,37 +7133,37 @@ Use &apos;Import files…&apos; to manually select .xlsx files.</source>
 {details}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="388"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="389"/>
         <source>From email imported: {imported}, rejected {rejected}.</source>
         <translation>Из Outlook-а увезено: {imported}, одбачено {rejected}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="394"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="395"/>
         <source>From email imported {n} submissions.</source>
         <translation>Из Outlook-а увезено {n} пријава.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="409"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="410"/>
         <source>Candidacy registry is empty — no lists to aggregate.</source>
         <translation>Регистар кандидатура је празан — нема листа за обједињавање.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="416"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="417"/>
         <source>No polling stations in OIK settings.</source>
         <translation>Нема бирачких места у поставкама ОИК.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="491"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="492"/>
         <source>Aggregated {n} files → {master}.</source>
         <translation>Обједињено {n} фајлова → {master}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="497"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="498"/>
         <source>Aggregated with warnings ({n} files).</source>
         <translation>Обједињено са упозорењима ({n} фајлова).</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/prosireni_workspace.py" line="506"/>
+        <location filename="../gui/tabs/prosireni_workspace.py" line="507"/>
         <source>Error: {exc}</source>
         <translation>Грешка: {exc}</translation>
     </message>

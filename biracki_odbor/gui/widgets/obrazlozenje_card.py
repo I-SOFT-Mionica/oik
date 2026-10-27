@@ -138,7 +138,8 @@ class ObrazlozenjeCard(QFrame):
         self.editor = _AutoResizingPlainTextEdit(
             self._MIN_EDITOR_HEIGHT, self._MAX_EDITOR_HEIGHT,
         )
-        self.editor.setVisible(not paragraph.optional)
+        if paragraph.optional:  # never setVisible(True) before parenting: it pops a window
+            self.editor.hide()
         self.editor.setPlaceholderText(QCoreApplication.translate(
             "ObrazlozenjeFeature",
             "Paragraph text. **Bold** for bold text. "

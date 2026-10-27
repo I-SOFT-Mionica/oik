@@ -20,13 +20,15 @@ import logging
 import re
 import ssl
 import urllib.error
+import urllib.parse
 import urllib.request
+from pathlib import Path
 from dataclasses import dataclass
 from typing import Optional
 
 from PySide6.QtCore import QObject, QThread, QTimer, Signal
 
-from biracki_odbor import __version__, _release_info
+from biracki_odbor import __version__, _release_info, release_manifest
 from biracki_odbor.ssl_support import create_ssl_context
 
 
@@ -73,6 +75,11 @@ TIMEOUT_SECONDS = 5
 # Prefix on DownloadWorker.error when the transfer failed TLS verification,
 # so the GUI can name the cause rather than print an OpenSSL string.
 TLS_ERROR_MARKER = "[TLS] "
+
+# Prefix on DownloadWorker.error when the download was refused because it
+# isn't a verified release (bad/missing signed manifest, hash mismatch,
+# non-https). The GUI shows a security message instead of a network one.
+UNVERIFIED_MARKER = "[UNVERIFIED] "
 
 
 @dataclass
@@ -519,21 +526,52 @@ class DownloadWorker(QThread):
     single attribute is atomic under the GIL, so no lock is needed.
     Callers should poll `isRunning()` (thread-safe) to detect completion,
     then check `error` vs `result_path`.
+
+    `result_path` is only ever set for a verified file: HTTPS end to end,
+    and matching the release's signed manifest (release_manifest.py).
+    Anything else is deleted and reported in `error` -- this is the one
+    choke point both updaters (OIK, Formalizator) download through, and
+    what it hands back gets executed.
     """
 
-    def __init__(self, url: str, parent: QObject | None = None) -> None:
+    def __init__(
+        self, url: str, parent: QObject | None = None, expected_tag: str | None = None,
+    ) -> None:
         super().__init__(parent)
         self._url = url
+        self._expected_tag = expected_tag
         self.bytes_downloaded = 0
         self.bytes_total = 0
         self.error: str | None = None
         self.result_path: str | None = None
 
+    def _fetch_manifest(self) -> "release_manifest.Manifest":
+        """The release's signed manifest, a sibling of the installer URL."""
+        url = urllib.parse.urljoin(self._url, release_manifest.MANIFEST_NAME)
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(  # noqa: S310 — https, verified context
+                req, timeout=30, context=create_ssl_context(),
+            ) as resp:
+                if not resp.geturl().lower().startswith("https://"):
+                    raise release_manifest.ManifestError(f"manifest redirected off https: {resp.geturl()}")
+                raw = resp.read(1 << 20)
+        except urllib.error.HTTPError as exc:
+            raise release_manifest.ManifestError(
+                f"no signed manifest for this release ({exc.code})"
+            ) from exc
+        return release_manifest.parse(raw)
+
     def run(self) -> None:
         import os
         import tempfile
         log.info("DownloadWorker.run() starting: %s", self._url)
+        if not self._url.lower().startswith("https://"):
+            self.error = f"{UNVERIFIED_MARKER}not an https URL: {self._url}"
+            log.error("DownloadWorker: refusing %s", self._url)
+            return
         try:
+            manifest = self._fetch_manifest()
             req = urllib.request.Request(self._url, headers={"User-Agent": USER_AGENT})
             log.debug("DownloadWorker: opening connection")
             # context= is the whole fix: without it urlopen verifies
@@ -544,6 +582,10 @@ class DownloadWorker(QThread):
             with urllib.request.urlopen(  # noqa: S310 — https installer URL, verified context
                 req, timeout=120, context=create_ssl_context(),
             ) as resp:
+                if not resp.geturl().lower().startswith("https://"):
+                    raise release_manifest.ManifestError(
+                        f"redirected off https: {resp.geturl()}"
+                    )
                 self.bytes_total = int(resp.headers.get("Content-Length") or 0)
                 log.info("DownloadWorker: connected, content-length=%d", self.bytes_total)
                 fd, path = tempfile.mkstemp(suffix=".exe", prefix="OIK_Setup_")
@@ -565,7 +607,22 @@ class DownloadWorker(QThread):
                         pass
                     raise
             log.info("DownloadWorker: finished, %d bytes -> %s", self.bytes_downloaded, path)
+            filename = urllib.parse.urlsplit(self._url).path.rsplit("/", 1)[-1]
+            try:
+                release_manifest.verify_download(
+                    manifest, filename, Path(path), self._expected_tag,
+                )
+            except release_manifest.ManifestError:
+                try:
+                    os.unlink(path)
+                except OSError:
+                    pass
+                raise
+            log.info("DownloadWorker: %s verified against signed manifest %s", filename, manifest.tag)
             self.result_path = path
+        except release_manifest.ManifestError as exc:
+            log.error("DownloadWorker: verification failed: %s", exc)
+            self.error = f"{UNVERIFIED_MARKER}{exc}"
         except Exception as exc:
             log.exception("DownloadWorker: failed before/opening connection")
             # Tag TLS failures so the GUI can explain the cause and the

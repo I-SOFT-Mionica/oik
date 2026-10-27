@@ -153,7 +153,8 @@ class Phase2Tab(QWidget):
             )
         )
         self.btn_import_outlook.clicked.connect(self._on_import_outlook)
-        self.btn_import_outlook.setVisible(_ec_mod.any_inbox_available())
+        if not _ec_mod.any_inbox_available():  # setVisible(True) here would pop a window
+            self.btn_import_outlook.hide()
         btns.addWidget(self.btn_import_outlook)
         btns.addStretch()
         # Used to «Отвори збирну табелу…» which launched Excel against

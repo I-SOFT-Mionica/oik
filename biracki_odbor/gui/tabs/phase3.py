@@ -267,7 +267,8 @@ class Phase3Tab(QWidget):
             " Drafts are NOT sent automatically."
         ))
         self.btn_send_members.setEnabled(False)
-        self.btn_send_members.setVisible(self._spec.slug == "stalni")
+        if self._spec.slug != "stalni":  # setVisible(True) here would pop a window
+            self.btn_send_members.hide()
         self.btn_send_members.clicked.connect(self._on_send_resenja_to_members)
         btns.addWidget(self.btn_send_members)
         btns.addStretch()

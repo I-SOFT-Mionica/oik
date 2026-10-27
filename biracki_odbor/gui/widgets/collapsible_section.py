@@ -139,7 +139,8 @@ class CollapsibleSection(QWidget):
 
         self._desc_lbl = QLabel(description)
         self._desc_lbl.setObjectName("CollapsibleDesc")
-        self._desc_lbl.setVisible(bool(description))
+        if not description:  # never setVisible(True) before parenting: it pops a window
+            self._desc_lbl.hide()
         hbox.addWidget(self._desc_lbl)
 
         hbox.addStretch()

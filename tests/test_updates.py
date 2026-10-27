@@ -302,6 +302,9 @@ class _FakeResponse:
         self._read = True
         return self._payload
 
+    def geturl(self) -> str:
+        return "https://api.isoft.rs/downloads/v1/OIK_Setup.exe"
+
     def __enter__(self):
         return self
 
@@ -314,20 +317,26 @@ def test_the_download_uses_a_verifying_context(monkeypatch, tmp_path) -> None:
     certificate store, which is what rejected the server in the field."""
     import ssl
 
-    captured = {}
+    contexts = []
 
     def fake_urlopen(_req, **kwargs):
-        captured.update(kwargs)
+        contexts.append(kwargs.get("context"))
         return _FakeResponse(b"MZ")
 
     monkeypatch.setattr(updates.urllib.request, "urlopen", fake_urlopen)
     worker = updates.DownloadWorker("https://api.isoft.rs/downloads/v1/OIK_Setup.exe")
     worker.run()
 
-    assert worker.error is None, worker.error
-    assert isinstance(captured.get("context"), ssl.SSLContext)
-    assert captured["context"].verify_mode is ssl.CERT_REQUIRED
-    assert captured["context"].check_hostname is True
+    # Every connection the worker makes (signed manifest, then installer)
+    # goes through the verifying context. The fake payload isn't a signed
+    # release, so the worker refuses it -- tests/test_release_manifest.py
+    # covers that side.
+    assert contexts, "the worker made no connection"
+    for ctx in contexts:
+        assert isinstance(ctx, ssl.SSLContext)
+        assert ctx.verify_mode is ssl.CERT_REQUIRED
+        assert ctx.check_hostname is True
+    assert worker.result_path is None
 
 
 def test_the_check_uses_a_verifying_context(monkeypatch) -> None:

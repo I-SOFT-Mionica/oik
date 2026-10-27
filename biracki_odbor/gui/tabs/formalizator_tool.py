@@ -28,7 +28,7 @@ from PySide6.QtWidgets import (
 
 from biracki_odbor.gui.app_state import AppState
 from biracki_odbor.integrations import formalizator_app
-from biracki_odbor.updates import TLS_ERROR_MARKER, DownloadWorker
+from biracki_odbor.updates import TLS_ERROR_MARKER, UNVERIFIED_MARKER, DownloadWorker
 
 log = logging.getLogger(__name__)
 
@@ -197,7 +197,7 @@ class FormalizatorPage(QWidget):
         self._stall_since = time.monotonic()
         from biracki_odbor.updates import cleanup_stale_installer_downloads
         cleanup_stale_installer_downloads()
-        self._worker = DownloadWorker(url, self)
+        self._worker = DownloadWorker(url, self, expected_tag=manifest.tag)
         self._worker.start()
         self._timer = QTimer(self)
         self._timer.timeout.connect(self._poll_download)
@@ -275,6 +275,11 @@ class FormalizatorPage(QWidget):
         404 is the expected answer until the companion installer is
         published to the server, so it gets its own sentence rather than
         an HTTP code the operator cannot act on."""
+        if message.startswith(UNVERIFIED_MARKER):
+            return self.tr(
+                "The downloaded file could not be verified as an official"
+                " release, so it was deleted and not run. Please contact support."
+            )
         if message.startswith(TLS_ERROR_MARKER):
             return self.tr(
                 "This computer did not accept the server's certificate, so"

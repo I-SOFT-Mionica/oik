@@ -91,7 +91,8 @@ class _ProsireniPhase2Tab(QWidget):
             )
         )
         self.btn_outlook.clicked.connect(self._import_outlook)
-        self.btn_outlook.setVisible(_ec_mod.any_inbox_available())
+        if not _ec_mod.any_inbox_available():  # setVisible(True) here would pop a window
+            self.btn_outlook.hide()
         btn_row.addWidget(self.btn_outlook)
 
         self.btn_run = QPushButton(self.tr("Run"))

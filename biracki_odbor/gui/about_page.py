@@ -1319,6 +1319,7 @@ class AboutPage(QWidget):
             )
             if info.is_direct:
                 self._installer_url = info.url
+                self._installer_tag = info.latest
                 self._refresh_installer_link()
                 self._download_url = ""
                 self.btn_install.setVisible(True)
@@ -1354,6 +1355,7 @@ class AboutPage(QWidget):
         )
         if info.is_direct:
             self._installer_url = info.url
+            self._installer_tag = info.latest
             self._refresh_installer_link()
             self._download_url = ""
             self.btn_install.setVisible(True)
@@ -1388,7 +1390,9 @@ class AboutPage(QWidget):
         self.lbl_update_status.setText("")
         from biracki_odbor.updates import cleanup_stale_installer_downloads
         cleanup_stale_installer_downloads()
-        self._download_worker = DownloadWorker(self._installer_url, self)
+        self._download_worker = DownloadWorker(
+            self._installer_url, self, expected_tag=getattr(self, "_installer_tag", None),
+        )
         self._download_worker.start()
         log.info("download worker thread started, isRunning=%s", self._download_worker.isRunning())
 
@@ -1467,7 +1471,21 @@ class AboutPage(QWidget):
         log.error("update download failed: %s", msg)
         from PySide6.QtWidgets import QMessageBox
 
-        from biracki_odbor.updates import TLS_ERROR_MARKER
+        from biracki_odbor.updates import TLS_ERROR_MARKER, UNVERIFIED_MARKER
+        if msg.startswith(UNVERIFIED_MARKER):
+            # Not a network problem: what arrived is not a release we
+            # signed. Never offer "download it manually" here.
+            QMessageBox.critical(
+                self,
+                "Ажурирање није потврђено",
+                "Преузета датотека није потврђена као званично издање"
+                " I-SOFT-а, па инсталација је заустављена и датотека"
+                " обрисана.\n\n"
+                "Не преузимајте инсталацију са других места. Јавите се"
+                " подршци.\n\n"
+                f"Детаљи: {msg[len(UNVERIFIED_MARKER):]}",
+            )
+            return
         if msg.startswith(TLS_ERROR_MARKER):
             # Naming the cause matters: the operator's next move is a
             # support call, and "certificate" points somewhere very

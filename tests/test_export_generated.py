@@ -168,6 +168,53 @@ def test_izmene_open_folder_uses_export_path(app, home, tmp_path, monkeypatch) -
         panel.deleteLater()
 
 
+def test_izmene_export_button_copies_every_decision_and_opens_the_folder(
+    app, home, tmp_path, monkeypatch,
+) -> None:
+    """The Измене tab always offers an export of every amendment decision
+    already generated -- also after a restart, and also when the copy
+    made at generation time failed (e.g. a network share was down)."""
+    from biracki_odbor import app_paths
+    from biracki_odbor.core.workflow import PROSIRENI_SPEC, STALNI_SPEC
+    from biracki_odbor.gui.tabs.izmene import IzmenaPanel
+
+    popen_calls: list[list] = []
+    monkeypatch.setattr(
+        "biracki_odbor.gui.tabs.izmene.subprocess.Popen",
+        lambda cmd, **kw: popen_calls.append(list(cmd)),
+    )
+    state = _make_state(tmp_path)
+
+    panel = IzmenaPanel(STALNI_SPEC, state, lambda jmbg: None)
+    try:
+        assert not panel.btn_open_out.isEnabled(), "nothing generated yet"
+    finally:
+        panel.deleteLater()
+
+    out = app_paths.izmene_dir()
+    for name in ("БМ_01_STALNI_izmena_01.docx", "БМ_03_STALNI_izmena_02.docx",
+                 "БМ_02_PROSIRENI_izmena_01.docx"):
+        (out / name).write_bytes(b"docx")
+
+    panel = IzmenaPanel(STALNI_SPEC, state, lambda jmbg: None)
+    try:
+        assert panel.btn_open_out.isEnabled()
+        panel.btn_open_out.click()
+        dest = state.files_dir("Измене")
+        assert sorted(p.name for p in dest.glob("*.docx")) == [
+            "БМ_01_STALNI_izmena_01.docx", "БМ_03_STALNI_izmena_02.docx",
+        ], "only this workflow's decisions"
+        assert popen_calls == [["explorer", str(dest)]]
+    finally:
+        panel.deleteLater()
+
+    panel = IzmenaPanel(PROSIRENI_SPEC, state, lambda jmbg: None)
+    try:
+        assert panel.btn_open_out.isEnabled()
+    finally:
+        panel.deleteLater()
+
+
 def test_phase3_open_folder_uses_export_path(app, home, tmp_path, monkeypatch) -> None:
     from biracki_odbor.gui.tabs.phase3 import Phase3Tab
 

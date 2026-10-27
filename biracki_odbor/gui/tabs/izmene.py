@@ -600,7 +600,20 @@ class IzmenaPanel(QWidget):
                 table.setItem(row_idx, col, item)
 
     @log_timing("IzmenaPanel._refresh_changes_table")
+    def _generated_files(self) -> list[Path]:
+        """Every decision of the current kind already generated for this
+        workflow (izmena: БМ_NN_STALNI|PROSIRENI_izmena_NN.docx)."""
+        if self._mode == "prestanak":
+            return sorted(app_paths.prestanak_dir().glob("Prestanak_*.docx"))
+        tag = "STALNI" if self._spec.slug == "stalni" else "PROSIRENI"
+        return sorted(app_paths.izmene_dir().glob(f"БМ_*_{tag}_izmena_*.docx"))
+
+    def _refresh_export_btn(self) -> None:
+        if hasattr(self, "btn_open_out"):
+            self.btn_open_out.setEnabled(bool(self._generated_files()))
+
     def _refresh_changes_table(self) -> None:
+        self._refresh_export_btn()
         slug = self._spec.slug
         log_path = app_paths.corrections_log_path_for(_SlugProxy(slug))
         wl = self.state.generation_log.workflow(slug)
@@ -694,6 +707,7 @@ class IzmenaPanel(QWidget):
         self._mode = mode
         self._izmena_editor.setVisible(mode == "izmena")
         self._prestanak_editor.setVisible(mode == "prestanak")
+        self._refresh_export_btn()
 
     def _on_row_selected(self, variant: str) -> None:
         table = getattr(self, f"table_{variant}")
@@ -974,12 +988,26 @@ class IzmenaPanel(QWidget):
         lay.addWidget(self.lbl_gen_status)
 
         btns = QHBoxLayout()
-        self.btn_open_out = QPushButton(QCoreApplication.translate("IzmeneFeature","Open folder"))
-        self.btn_open_out.setVisible(False)
-        self.btn_open_out.clicked.connect(self._open_folder)
+        self.btn_open_out = QPushButton(
+            QCoreApplication.translate("IzmeneFeature", "Open decisions folder…")
+        )
+        self.btn_open_out.setToolTip(QCoreApplication.translate(
+            "IzmeneFeature",
+            "Copies every decision of this type to your export folder and opens it.",
+        ))
+        self.btn_open_out.clicked.connect(self._export_all)
         btns.addWidget(self.btn_open_out)
+        self._refresh_export_btn()
         btns.addStretch()
-        self.btn_generate = QPushButton(QCoreApplication.translate("IzmeneFeature","Generate amendment decision…"))
+        # Same bottom bar as Решења (Phase3Tab): folder left; Освежи
+        # провере + Покрени right.
+        self.btn_refresh = QPushButton(QCoreApplication.translate("IzmeneFeature", "Refresh checks"))
+        self.btn_refresh.clicked.connect(self._refresh_all)
+        btns.addWidget(self.btn_refresh)
+        self.btn_generate = QPushButton(QCoreApplication.translate("IzmeneFeature", "Run"))
+        self.btn_generate.setToolTip(QCoreApplication.translate(
+            "IzmeneFeature", "Generate the decision for the selected change",
+        ))
         self.btn_generate.setObjectName("PrimaryButton")
         self.btn_generate.clicked.connect(self._on_generate)
         btns.addWidget(self.btn_generate)
@@ -1531,7 +1559,7 @@ class IzmenaPanel(QWidget):
         self.lbl_gen_status.setText(
             QCoreApplication.translate("IzmeneFeature","Decision saved: <b>{name}</b>").format(name=out_path.name)
         )
-        self.btn_open_out.setVisible(True)
+        self._refresh_export_btn()
         self.banner.show_info(
             QCoreApplication.translate("IzmeneFeature","Generated: {name}").format(name=out_path.name)
         )
@@ -1645,10 +1673,36 @@ class IzmenaPanel(QWidget):
         self.lbl_gen_status.setText(
             QCoreApplication.translate("IzmeneFeature","Decision saved: <b>{name}</b>").format(name=names)
         )
-        self.btn_open_out.setVisible(True)
+        self._refresh_export_btn()
         self.banner.show_info(QCoreApplication.translate("IzmeneFeature","Generated: {name}").format(name=names))
 
     # ── Helpers ───────────────────────────────────────────────────────────────
+
+    def _refresh_all(self) -> None:
+        """Освежи провере: re-read the changes log, lock state, export
+        button and preview -- e.g. after corrections made elsewhere."""
+        self._refresh_lock_state()
+        self._refresh_changes_table()
+        self._refresh_preview()
+
+    def _export_all(self) -> None:
+        """Copy every generated decision of this kind to the export folder
+        again (an earlier automatic copy can fail, e.g. a network share
+        that was down) and open it."""
+        files = self._generated_files()
+        purpose = "Решења о престанку функције" if self._mode == "prestanak" else "Измене"
+        copied = self.state.export_generated(purpose, files)
+        if len(copied) < len(files):
+            QMessageBox.warning(
+                self,
+                QCoreApplication.translate("IzmeneFeature", "Export"),
+                QCoreApplication.translate(
+                    "IzmeneFeature",
+                    "Copied {n} of {total} decisions. Close any that are open in Word "
+                    "and check that the export folder is reachable, then try again.",
+                ).format(n=len(copied), total=len(files)),
+            )
+        self._open_folder()
 
     def _open_folder(self) -> None:
         # Confirm where, even when it worked — the window can land behind

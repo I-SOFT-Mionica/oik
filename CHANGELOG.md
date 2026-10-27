@@ -4,6 +4,30 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/sr/1.1.0/), верзионисање по [SemVer](https://semver.org/lang/sr/).
 
+## <small>0.103.1 (2026-10-27)</small>
+
+* fix(build): build installers on Python 3.14 (patched ssl), not 3.12.10 ([3cc1fee](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/3cc1fee))
+
+## 0.103.0 (2026-10-27)
+
+* feat(updates): run only installers that match a signed release manifest ([0f93bad](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/0f93bad))
+
+## <small>0.102.1 (2026-10-27)</small>
+
+* fix(gui): no more windows flashing when the app starts ([e4773d7](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/e4773d7))
+
+## 0.102.0 (2026-10-27)
+
+* feat(izmene): same bottom bar as Решења — folder, Освежи провере, Покрени ([ba875aa](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/ba875aa))
+
+## 0.101.0 (2026-10-27)
+
+* feat(izmene): permanent "Извези решења…" button in Измене ([5fadfd7](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/5fadfd7))
+
+## 0.100.0 (2026-10-17)
+
+* feat(phone): phone numbers are cleaned up wherever they come in ([986eaa8](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/986eaa8))
+
 ## <small>0.99.1 (2026-10-17)</small>
 
 * fix(demo): demo and sample people use invented data that can't be anyone's ([9adc28a](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/9adc28a))
