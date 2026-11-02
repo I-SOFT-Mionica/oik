@@ -26,6 +26,9 @@ from PySide6.QtWidgets import (
 
 from biracki_odbor import app_paths
 from biracki_odbor.logging_setup import log_timing
+from biracki_odbor.gui.widgets.block_layout_editor import (
+    BlockLayoutEditor, BlockPalette, no_wheel,
+)
 from biracki_odbor.core.observers import (
     ALL_BLOCK_TYPES, BLOCK_LABELS,
     BLOCK_STATIC_TEXT, BLOCK_FIELD_NAME, BLOCK_FIELD_ORG, BLOCK_FIELD_ID,
@@ -923,12 +926,9 @@ class _DocumentiTab(QWidget):
 
 
 # ── Legitimacija layout editor ────────────────────────────────────────
-
-# Override for the compact ▲▼/Горе/Доле/Уклони buttons.
-# The global QPushButton CSS sets padding: 10px 22px which leaves no
-# room for text in a narrow button — override per-button with this style.
-_COMPACT_BTN = "padding: 3px 8px; font-size: 11pt;"
-_COMPACT_BTN_DANGER = _COMPACT_BTN + " color: #9B0000; border-color: #F0B0B0;"
+# The builder itself is gui/widgets/block_layout_editor.py (shared with
+# envelopes); this supplies the observer-card blocks, card setup and
+# persistence.
 
 _BLOCK_PREVIEW_COLORS: dict[str, str] = {
     BLOCK_STATIC_TEXT:       "#D0E8F5",
@@ -977,369 +977,46 @@ def _block_preview_text(
     return _computed.get(blk.block_type, BLOCK_LABELS.get(blk.block_type, ""))
 
 
-class _NoWheelFilter(QObject):
-    """Swallows WheelEvents so QComboBox values don't change on scroll."""
-
-    def eventFilter(self, obj, event) -> bool:
-        if event.type() == QEvent.Type.Wheel:
-            event.ignore()
-            return True
-        return False
-
-
-_NO_WHEEL_SINGLETON: _NoWheelFilter | None = None
-
-
-def _no_wheel() -> _NoWheelFilter:
-    global _NO_WHEEL_SINGLETON
-    if _NO_WHEEL_SINGLETON is None:
-        _NO_WHEEL_SINGLETON = _NoWheelFilter()
-    return _NO_WHEEL_SINGLETON
-
-
-class _CardPreview(QWidget):
-    """Live painted preview of the legitimacija card layout.
-
-    Scales the card to fit the available area while keeping the aspect
-    ratio. Blocks are painted row-by-row using the 12-column grid so
-    the preview matches the intended print output.
-    """
-
-    def __init__(self, parent=None) -> None:
-        super().__init__(parent)
-        self._blocks: list[LegitimacijaBlock] = []
-        self._card_w_mm = 90.0
-        self._card_h_mm = 60.0
-        self._municipality = ""
-        self._election = ""
-        self._chairman_title = ""
-        self._chairman_name = ""
-        self.setMinimumWidth(200)
-        self.setMinimumHeight(200)
-
-    def update_preview(
-        self,
-        blocks: list[LegitimacijaBlock],
-        card_w_mm: float,
-        card_h_mm: float,
-        municipality: str = "",
-        election: str = "",
-        chairman_title: str = "",
-        chairman_name: str = "",
-    ) -> None:
-        self._blocks = list(blocks)
-        self._card_w_mm = max(20.0, card_w_mm)
-        self._card_h_mm = max(20.0, card_h_mm)
-        self._municipality = municipality
-        self._election = election
-        self._chairman_title = chairman_title
-        self._chairman_name = chairman_name
-        self.update()
-
-    def paintEvent(self, _event) -> None:
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-
-        margin = 20
-        avail_w = self.width() - 2 * margin
-        avail_h = self.height() - 2 * margin
-        if avail_w <= 0 or avail_h <= 0:
-            painter.end()
-            return
-
-        scale = min(avail_w / self._card_w_mm, avail_h / self._card_h_mm)
-        cw = self._card_w_mm * scale
-        ch = self._card_h_mm * scale
-        cx = margin + (avail_w - cw) / 2
-        cy = margin + (avail_h - ch) / 2
-
-        # Drop shadow
-        painter.setPen(Qt.PenStyle.NoPen)
-        painter.setBrush(QColor("#C0C0C0"))
-        painter.drawRoundedRect(QRectF(cx + 3, cy + 3, cw, ch), 4, 4)
-
-        # Card background + border
-        painter.setBrush(QColor("#FFFFFF"))
-        painter.setPen(QPen(QColor("#2F5496"), 1.5))
-        painter.drawRoundedRect(QRectF(cx, cy, cw, ch), 4, 4)
-
-        # Clip content to card interior
-        painter.setClipRect(QRect(int(cx) + 1, int(cy) + 1, int(cw) - 2, int(ch) - 2))
-
-        # Layout: each row_height unit = ch/10, minimum 14 px
-        base_h = max(14.0, ch / 10)
-        pad = 3.0
-        small_font = QFont("Segoe UI", max(6, int(base_h * 0.45)))
-        painter.setFont(small_font)
-
-        # Group blocks into rows respecting the 12-column grid
-        rows: list[tuple[list, float]] = []
-        cur_row: list = []
-        cur_col = 0
-        cur_row_h = 0.0
-        for blk in self._blocks:
-            span = max(1, min(12, blk.col_span))
-            h = max(1, blk.row_height) * base_h
-            if cur_col + span > 12:
-                rows.append((list(cur_row), cur_row_h))
-                cur_row, cur_col, cur_row_h = [], 0, 0.0
-            cur_row.append((blk, span, h))
-            cur_col += span
-            cur_row_h = max(cur_row_h, h)
-        if cur_row:
-            rows.append((cur_row, cur_row_h))
-
-        draw_y = cy + pad
-        usable_w = cw - 2 * pad
-
-        for row_items, row_h in rows:
-            if draw_y + row_h > cy + ch:
-                break
-            draw_x = cx + pad
-            for blk, span, blk_h in row_items:
-                bw = (span / 12) * usable_w - 1
-                bh = blk_h - 1
-
-                if blk.block_type == BLOCK_DIVIDER:
-                    painter.setPen(QPen(QColor("#888888"), 1))
-                    painter.setBrush(Qt.BrushStyle.NoBrush)
-                    mid = draw_y + bh / 2
-                    painter.drawLine(int(draw_x), int(mid), int(draw_x + bw), int(mid))
-                elif blk.block_type != BLOCK_SPACER:
-                    fill = QColor(_BLOCK_PREVIEW_COLORS.get(blk.block_type, "#F0F0F0"))
-                    painter.setBrush(fill)
-                    painter.setPen(QPen(QColor("#AAAAAA"), 0.5))
-                    painter.drawRect(QRectF(draw_x, draw_y, bw, bh))
-                    label = _block_preview_text(
-                        blk, self._municipality, self._election,
-                        self._chairman_title, self._chairman_name,
-                    )
-                    if label:
-                        _h_align = {
-                            "left":   Qt.AlignmentFlag.AlignLeft,
-                            "center": Qt.AlignmentFlag.AlignHCenter,
-                            "right":  Qt.AlignmentFlag.AlignRight,
-                        }.get(blk.alignment, Qt.AlignmentFlag.AlignHCenter)
-                        text_rect = QRectF(draw_x + 2, draw_y, bw - 4, bh)
-                        wrap_flags = int(Qt.AlignmentFlag.AlignVCenter | _h_align | Qt.TextFlag.TextWordWrap)
-                        # Shrink font until the wrapped text fits vertically
-                        base_font = painter.font()
-                        fit_font = QFont(base_font)
-                        while fit_font.pointSize() > 5:
-                            fm = QFontMetrics(fit_font)
-                            br = fm.boundingRect(
-                                QRect(0, 0, int(text_rect.width()), 9999),
-                                wrap_flags, label,
-                            )
-                            if br.height() <= text_rect.height():
-                                break
-                            fit_font.setPointSize(fit_font.pointSize() - 1)
-                        if fit_font.pointSize() != base_font.pointSize():
-                            painter.setFont(fit_font)
-                        painter.setPen(QColor("#1F2A44"))
-                        painter.drawText(text_rect, wrap_flags, label)
-                        if fit_font.pointSize() != base_font.pointSize():
-                            painter.setFont(base_font)
-                draw_x += bw + 1
-            draw_y += row_h
-
-        painter.end()
-
-
-class _LegitimacijaBlockCard(QFrame):
-    """One block card in the legitimacija layout editor."""
-
-    def __init__(
-        self,
-        block: LegitimacijaBlock,
-        *,
-        on_remove,
-        on_move_up,
-        on_move_down,
-        on_changed,
-        parent=None,
-    ) -> None:
-        super().__init__(parent)
-        self.setFrameShape(QFrame.Shape.StyledPanel)
-        self.setObjectName("Card")
-        self._block_type = block.block_type
-        self._bg = _BLOCK_PREVIEW_COLORS.get(block.block_type, "#F5F5F5")
-        self._apply_style(active=False)
-
-        root = QVBoxLayout(self)
-        root.setContentsMargins(8, 6, 8, 6)
-        root.setSpacing(4)
-
-        # Top row: type label + compact action buttons.
-        # setStyleSheet overrides the global padding: 10px 22px rule that
-        # would otherwise make narrow buttons show no text at all.
-        top = QHBoxLayout()
-        type_label = QLabel(f"<b>{BLOCK_LABELS.get(block.block_type, block.block_type)}</b>")
-        type_label.setTextFormat(Qt.TextFormat.RichText)
-        top.addWidget(type_label, stretch=1)
-
-        btn_up = QPushButton(self.tr("Up"))
-        btn_up.setStyleSheet(_COMPACT_BTN)
-        btn_up.setToolTip(self.tr("Move up"))
-        btn_up.clicked.connect(lambda: on_move_up(self))
-        top.addWidget(btn_up)
-
-        btn_down = QPushButton(self.tr("Down"))
-        btn_down.setStyleSheet(_COMPACT_BTN)
-        btn_down.setToolTip(self.tr("Move down"))
-        btn_down.clicked.connect(lambda: on_move_down(self))
-        top.addWidget(btn_down)
-
-        btn_rm = QPushButton(self.tr("Remove"))
-        btn_rm.setStyleSheet(_COMPACT_BTN_DANGER)
-        btn_rm.setToolTip(self.tr("Remove block"))
-        btn_rm.clicked.connect(lambda: on_remove(self))
-        top.addWidget(btn_rm)
-        root.addLayout(top)
-
-        # Width (col_span) + height row — QLineEdit for height to avoid
-        # the scroll-to-change behavior of QSpinBox.
-        props_row = QHBoxLayout()
-        props_row.addWidget(QLabel(self.tr("Width:")))
-        self._col_combo = QComboBox()
-        self._col_combo.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self._col_combo.installEventFilter(_no_wheel())
-        for c in range(1, 13):
-            self._col_combo.addItem(f"{c} / 12", c)
-        self._col_combo.setCurrentIndex(max(0, min(11, block.col_span - 1)))
-        self._col_combo.setToolTip(
-            self.tr(
-                "Block width in 12-column grid.\n"
-                "12 = full width  |  6 = half  |  4 = third  |  3 = quarter"
-            )
-        )
-        self._col_combo.currentIndexChanged.connect(on_changed)
-        props_row.addWidget(self._col_combo)
-
-        props_row.addSpacing(12)
-        props_row.addWidget(QLabel(self.tr("Height:")))
-        self._row_edit = QLineEdit(str(max(1, block.row_height)))
-        self._row_edit.setValidator(QIntValidator(1, 20))
-        self._row_edit.setFixedWidth(50)
-        self._row_edit.setToolTip(self.tr("Relative block height in rows (1 = standard row)."))
-        self._row_edit.editingFinished.connect(on_changed)
-        props_row.addWidget(self._row_edit)
-
-        props_row.addSpacing(12)
-        props_row.addWidget(QLabel(self.tr("Alignment:")))
-        self._align_combo = QComboBox()
-        self._align_combo.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self._align_combo.installEventFilter(_no_wheel())
-        for label, data in (
-            (self.tr("Left"), "left"),
-            (self.tr("Center"), "center"),
-            (self.tr("Right"), "right"),
-        ):
-            self._align_combo.addItem(label, data)
-        idx = self._align_combo.findData(block.alignment or "center")
-        self._align_combo.setCurrentIndex(max(0, idx))
-        self._align_combo.currentIndexChanged.connect(on_changed)
-        props_row.addWidget(self._align_combo)
-        props_row.addStretch()
-        root.addLayout(props_row)
-
-        # Text field — only for STATIC_TEXT blocks
-        self._text_edit: QLineEdit | None = None
-        if block.block_type == BLOCK_STATIC_TEXT:
-            self._text_edit = QLineEdit(block.value)
-            self._text_edit.setPlaceholderText(
-                self.tr("e.g. REPUBLIC OF SERBIA or [municipality]")
-            )
-            self._text_edit.setToolTip(
-                self.tr(
-                    "Placeholders replaced during generation:\n"
-                    "  [municipality] → municipality name\n"
-                    "  [election]     → election name"
-                )
-            )
-            self._text_edit.editingFinished.connect(on_changed)
-            root.addWidget(self._text_edit)
-
-    def _apply_style(self, active: bool) -> None:
-        border = "#2F5496" if active else "#AAAAAA"
-        width  = "2px"     if active else "1px"
-        self.setStyleSheet(
-            f"QFrame#Card {{ background-color: {self._bg};"
-            f" border: {width} solid {border}; border-radius: 4px; }}"
-        )
-
-    def set_active(self, active: bool) -> None:
-        self._apply_style(active)
-
-    def to_block(self) -> LegitimacijaBlock:
-        value = self._text_edit.text().strip() if self._text_edit else ""
-        try:
-            row_h = max(1, int(self._row_edit.text()))
-        except ValueError:
-            row_h = 1
-        return LegitimacijaBlock(
-            block_type=self._block_type,
-            value=value,
-            col_span=self._col_combo.currentData() or 12,
-            row_height=row_h,
-            alignment=self._align_combo.currentData() or "center",
-        )
-
-
-class _LegitimacijaTab(QWidget):
-    """Tab 0 of PosmatraciWorkspace — legitimacija layout builder.
-
-    Left half: card-setup (plain QLineEdit mm inputs) + scrollable block
-    editor. Right half: live _CardPreview that redraws on every change.
-    """
+class _LegitimacijaTab(BlockLayoutEditor):
+    """Tab 0 of PosmatraciWorkspace — legitimacija layout builder."""
 
     def __init__(self, state: AppState, parent=None) -> None:
-        super().__init__(parent)
         self.state = state
-        self._cards: list[_LegitimacijaBlockCard] = []
-        self._active_card: _LegitimacijaBlockCard | None = None
-        self._loading = False
+        self.TITLE = self.tr("Legitimacija design")
+        self.BLOCKS_TITLE = self.tr("Block layout on legitimacija")
+        self.PREVIEW_TITLE = self.tr("Card preview")
+        super().__init__(parent)
 
-        root = QVBoxLayout(self)
-        root.setContentsMargins(0, 0, 0, 0)
-        root.setSpacing(0)
+        for ed in (self._card_w, self._card_h, self._gutter, self._margin):
+            ed.editingFinished.connect(self._on_setup_changed)
+        self._paper_combo.currentIndexChanged.connect(self._on_setup_changed)
+        self.state.election_changed.connect(self._refresh_preview)
+        self.state.oik_changed.connect(self._refresh_preview)
+        self._load_from_state()
 
-        # Header bar with title + save button
-        header = QWidget()
-        header.setObjectName("TabHeader")
-        header_row = QHBoxLayout(header)
-        header_row.setContentsMargins(16, 8, 16, 8)
-        lbl = QLabel(self.tr("Legitimacija design"))
-        lbl.setObjectName("TitleLabel")
-        header_row.addWidget(lbl)
-        header_row.addStretch()
-        self._btn_save = QPushButton(self.tr("Save"))
-        self._btn_save.setObjectName("PrimaryButton")
-        self._btn_save.clicked.connect(self._manual_save)
-        header_row.addWidget(self._btn_save)
-        self._save_label = QLabel("")
-        self._save_label.setObjectName("MutedLabel")
-        header_row.addWidget(self._save_label)
-        root.addWidget(header)
+    # ── BlockLayoutEditor hooks ───────────────────────────────────
+    def _palette(self) -> BlockPalette:
+        def preview(blk: LegitimacijaBlock) -> str:
+            chairman = self.state.oik.chairman
+            return _block_preview_text(
+                blk, self.state.oik.municipality.name, _election_label(self.state),
+                chairman.title, chairman.name,
+            )
+        return BlockPalette(
+            types=list(ALL_BLOCK_TYPES), labels=BLOCK_LABELS, colors=_BLOCK_PREVIEW_COLORS,
+            preview_text=preview,
+            static_hint=self.tr("e.g. REPUBLIC OF SERBIA or [municipality]"),
+            static_tooltip=self.tr(
+                "Placeholders replaced during generation:\n"
+                "  [municipality] → municipality name\n"
+                "  [election]     → election name"
+            ),
+        )
 
-        splitter = QSplitter(Qt.Orientation.Horizontal)
-        splitter.setChildrenCollapsible(False)
-        splitter.setHandleWidth(6)
+    def _page_size_mm(self) -> tuple[float, float]:
+        return self._read_mm(self._card_w, 90.0), self._read_mm(self._card_h, 60.0)
 
-        # ── Left: scrollable editor ───────────────────────────
-        scroll = QScrollArea()
-        scroll.setFrameShape(QFrame.Shape.NoFrame)
-        scroll.setWidgetResizable(True)
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        splitter.addWidget(scroll)
-
-        editor = QWidget()
-        editor_root = QVBoxLayout(editor)
-        editor_root.setContentsMargins(16, 16, 8, 16)
-        editor_root.setSpacing(14)
-        scroll.setWidget(editor)
-
-        # Card setup group — plain QLineEdit fields, no spinbox arrows
+    def _build_setup_box(self) -> QWidget:
         setup_box = QGroupBox(self.tr("Legitimacija card settings"))
         setup_form = QFormLayout(setup_box)
         setup_form.setLabelAlignment(Qt.AlignmentFlag.AlignRight)
@@ -1358,22 +1035,19 @@ class _LegitimacijaTab(QWidget):
         self._card_w, w_row = _mm_field("90.0", 20.0, 400.0)
         self._card_w.setToolTip(self.tr("Legitimacija width in mm (e.g. 90.0)"))
         setup_form.addRow(self.tr("Card width:"), w_row)
-
         self._card_h, h_row = _mm_field("60.0", 20.0, 400.0)
         self._card_h.setToolTip(self.tr("Legitimacija height in mm (e.g. 60.0)"))
         setup_form.addRow(self.tr("Card height:"), h_row)
-
         self._gutter, g_row = _mm_field("5.0", 0.0, 50.0)
         self._gutter.setToolTip(self.tr("Gap between cards (e.g. 5.0)"))
         setup_form.addRow(self.tr("Gap (gutter):"), g_row)
-
         self._margin, m_row = _mm_field("10.0", 0.0, 50.0)
         self._margin.setToolTip(self.tr("Sheet margin on each side (e.g. 10.0)"))
         setup_form.addRow(self.tr("Sheet margin:"), m_row)
 
         self._paper_combo = QComboBox()
         self._paper_combo.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self._paper_combo.installEventFilter(_no_wheel())
+        self._paper_combo.installEventFilter(no_wheel())
         for ps in PAPER_SIZES:
             pw, ph = PAPER_SIZES[ps]
             self._paper_combo.addItem(f"{ps}  ({int(pw)}×{int(ph)} mm)", ps)
@@ -1382,83 +1056,24 @@ class _LegitimacijaTab(QWidget):
         self._capacity_label = QLabel()
         self._capacity_label.setObjectName("MutedLabel")
         setup_form.addRow(self.tr("Capacity:"), self._capacity_label)
+        return setup_box
 
-        editor_root.addWidget(setup_box)
+    def _stored_layout(self) -> list[LegitimacijaBlock]:
+        return self.state.app_settings.posmatraci.legitimacija_layout
 
-        # Block list group
-        blocks_box = QGroupBox(self.tr("Block layout on legitimacija"))
-        blocks_vbox = QVBoxLayout(blocks_box)
+    def _store_layout(self, blocks: list[LegitimacijaBlock]) -> None:
+        self.state.app_settings.posmatraci.legitimacija_layout = blocks
 
-        self._cards_container = QWidget()
-        self._cards_layout = QVBoxLayout(self._cards_container)
-        self._cards_layout.setContentsMargins(0, 0, 0, 0)
-        self._cards_layout.setSpacing(8)
-        self._cards_layout.addStretch(1)
+    def _default_layout(self) -> list[LegitimacijaBlock]:
+        return default_legitimacija_layout()
 
-        self._blocks_scroll = QScrollArea()
-        self._blocks_scroll.setWidgetResizable(True)
-        self._blocks_scroll.setFrameShape(QFrame.Shape.NoFrame)
-        self._blocks_scroll.setMinimumHeight(320)
-        self._blocks_scroll.setWidget(self._cards_container)
-        blocks_vbox.addWidget(self._blocks_scroll)
+    def _save(self) -> None:
+        try:
+            self.state.save_app_settings()
+        except OSError as e:
+            log.warning("legitimacija settings save failed: %s", e)
 
-        add_row = QHBoxLayout()
-        self._block_type_combo = QComboBox()
-        self._block_type_combo.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self._block_type_combo.installEventFilter(_no_wheel())
-        for i, bt in enumerate(ALL_BLOCK_TYPES):
-            self._block_type_combo.addItem(BLOCK_LABELS.get(bt, bt), bt)
-            color = _BLOCK_PREVIEW_COLORS.get(bt)
-            if color:
-                self._block_type_combo.setItemData(i, QColor(color), Qt.ItemDataRole.BackgroundRole)
-        add_row.addWidget(self._block_type_combo, stretch=1)
-        btn_add = QPushButton(self.tr("+ Add block"))
-        btn_add.clicked.connect(self._add_block)
-        add_row.addWidget(btn_add)
-        btn_reset = QPushButton(self.tr("Reset to default"))
-        btn_reset.setToolTip(self.tr("Resets the layout to the standard template (Mionica 2024)"))
-        btn_reset.clicked.connect(self._reset_layout)
-        add_row.addWidget(btn_reset)
-        blocks_vbox.addLayout(add_row)
-
-        editor_root.addWidget(blocks_box)
-        editor_root.addStretch()
-
-        # ── Right: live preview ────────────────────────────────
-        right_w = QWidget()
-        right_vbox = QVBoxLayout(right_w)
-        right_vbox.setContentsMargins(8, 16, 16, 16)
-        right_vbox.setSpacing(8)
-
-        preview_heading = QLabel(self.tr("Card preview"))
-        preview_heading.setObjectName("HeadLabel")
-        right_vbox.addWidget(preview_heading)
-
-        self._preview = _CardPreview()
-        right_vbox.addWidget(self._preview, stretch=1)
-        splitter.addWidget(right_w)
-
-        splitter.setStretchFactor(0, 1)
-        splitter.setStretchFactor(1, 1)
-        splitter.setSizes([500, 500])
-        root.addWidget(splitter, stretch=1)
-
-        # Wire setup signals — editingFinished avoids re-rendering while typing
-        self._card_w.editingFinished.connect(self._on_setup_changed)
-        self._card_h.editingFinished.connect(self._on_setup_changed)
-        self._gutter.editingFinished.connect(self._on_setup_changed)
-        self._margin.editingFinished.connect(self._on_setup_changed)
-        self._paper_combo.currentIndexChanged.connect(self._on_setup_changed)
-
-        from PySide6.QtWidgets import QApplication
-        _app = QApplication.instance()
-        if isinstance(_app, QApplication):
-            _app.focusChanged.connect(self._on_focus_changed)
-        self.state.election_changed.connect(self._refresh_preview)
-        self.state.oik_changed.connect(self._refresh_preview)
-
-        self._load_from_state()
-
+    # ── card setup ────────────────────────────────────────────────
     def _read_mm(self, edit: QLineEdit, default: float) -> float:
         try:
             return max(1.0, float(edit.text().replace(",", ".")))
@@ -1473,10 +1088,9 @@ class _LegitimacijaTab(QWidget):
             self._card_h.setText(f"{cs.card_height_mm:.1f}")
             self._gutter.setText(f"{cs.gutter_mm:.1f}")
             self._margin.setText(f"{cs.margin_mm:.1f}")
-            idx = self._paper_combo.findData(cs.paper_size)
-            self._paper_combo.setCurrentIndex(max(0, idx))
+            self._paper_combo.setCurrentIndex(max(0, self._paper_combo.findData(cs.paper_size)))
             self._update_capacity(cs)
-            self._load_layout(self.state.app_settings.posmatraci.legitimacija_layout)
+            self._load_layout(self._stored_layout())
         finally:
             self._loading = False
         self._refresh_preview()
@@ -1492,116 +1106,7 @@ class _LegitimacijaTab(QWidget):
 
     @log_timing("PosmatraciWorkspace._refresh_preview")
     def _refresh_preview(self) -> None:
-        card_w = self._read_mm(self._card_w, 90.0)
-        card_h = self._read_mm(self._card_h, 60.0)
-        mun = self.state.oik.municipality
-        chairman = self.state.oik.chairman
-        election = _election_label(self.state)
-        self._preview.update_preview(
-            [c.to_block() for c in self._cards], card_w, card_h,
-            municipality=mun.name,
-            election=election,
-            chairman_title=chairman.title,
-            chairman_name=chairman.name,
-        )
-
-    def _load_layout(self, blocks: list[LegitimacijaBlock]) -> None:
-        while self._cards_layout.count() > 1:
-            item = self._cards_layout.takeAt(0)
-            if item is not None:
-                w = item.widget()
-                if w is not None:
-                    w.deleteLater()
-        self._cards.clear()
-        for block in blocks:
-            self._insert_card(block)
-
-    def _set_active_card(self, card: _LegitimacijaBlockCard | None) -> None:
-        if card is self._active_card:
-            return
-        if self._active_card is not None and self._active_card in self._cards:
-            self._active_card.set_active(False)
-        self._active_card = card
-        if card is not None:
-            card.set_active(True)
-
-    def _on_focus_changed(self, _old, new) -> None:
-        if new is None:
-            return
-        w = new
-        while w is not None:
-            if isinstance(w, _LegitimacijaBlockCard) and w in self._cards:
-                self._set_active_card(w)
-                return
-            w = w.parent()
-
-    def _insert_card(
-        self,
-        block: LegitimacijaBlock,
-        after: "_LegitimacijaBlockCard | None" = None,
-    ) -> _LegitimacijaBlockCard:
-        card = _LegitimacijaBlockCard(
-            block,
-            on_remove=self._remove_card,
-            on_move_up=self._move_card_up,
-            on_move_down=self._move_card_down,
-            on_changed=self._on_layout_changed,
-        )
-        if after is not None and after in self._cards:
-            idx = self._cards.index(after)
-            self._cards_layout.insertWidget(idx + 1, card)
-            self._cards.insert(idx + 1, card)
-        else:
-            self._cards_layout.insertWidget(self._cards_layout.count() - 1, card)
-            self._cards.append(card)
-        return card
-
-    def _remove_card(self, card: _LegitimacijaBlockCard) -> None:
-        if card is self._active_card:
-            # Move active to the card above, or below, or None
-            idx = self._cards.index(card)
-            next_active = (
-                self._cards[idx - 1] if idx > 0
-                else self._cards[idx + 1] if idx + 1 < len(self._cards)
-                else None
-            )
-            self._set_active_card(next_active)
-        if card in self._cards:
-            self._cards.remove(card)
-        self._cards_layout.removeWidget(card)
-        card.deleteLater()
-        self._on_layout_changed()
-
-    def _move_card_up(self, card: _LegitimacijaBlockCard) -> None:
-        idx = self._cards.index(card) if card in self._cards else -1
-        if idx <= 0:
-            return
-        self._cards.insert(idx - 1, self._cards.pop(idx))
-        self._cards_layout.removeWidget(card)
-        self._cards_layout.insertWidget(idx - 1, card)
-        self._on_layout_changed()
-
-    def _move_card_down(self, card: _LegitimacijaBlockCard) -> None:
-        idx = self._cards.index(card) if card in self._cards else -1
-        if idx < 0 or idx >= len(self._cards) - 1:
-            return
-        self._cards.insert(idx + 1, self._cards.pop(idx))
-        self._cards_layout.removeWidget(card)
-        self._cards_layout.insertWidget(idx + 1, card)
-        self._on_layout_changed()
-
-    def _add_block(self) -> None:
-        bt = self._block_type_combo.currentData()
-        if not bt:
-            return
-        card = self._insert_card(LegitimacijaBlock(block_type=bt), after=self._active_card)
-        self._set_active_card(card)
-        self._blocks_scroll.ensureWidgetVisible(card)
-        self._on_layout_changed()
-
-    def _reset_layout(self) -> None:
-        self._load_layout(default_legitimacija_layout())
-        self._on_layout_changed()
+        super()._refresh_preview()
 
     def _collect_card_setup(self) -> CardSetup:
         return CardSetup(
@@ -1620,27 +1125,6 @@ class _LegitimacijaTab(QWidget):
         self._update_capacity(cs)
         self._refresh_preview()
         self._save()
-
-    def _on_layout_changed(self) -> None:
-        if self._loading:
-            return
-        self.state.app_settings.posmatraci.legitimacija_layout = [
-            c.to_block() for c in self._cards
-        ]
-        self._refresh_preview()
-        self._save()
-
-    def _save(self) -> None:
-        try:
-            self.state.save_app_settings()
-        except OSError as e:
-            log.warning("legitimacija settings save failed: %s", e)
-
-    def _manual_save(self) -> None:
-        self._save()
-        self._save_label.setText(self.tr("Saved ✓"))
-        from PySide6.QtCore import QTimer
-        QTimer.singleShot(2000, lambda: self._save_label.setText(""))
 
 
 # ── Workspace ─────────────────────────────────────────────────────────

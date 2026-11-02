@@ -132,3 +132,24 @@ def test_wheel_scroll_does_not_change_the_date(picker: QDateEdit) -> None:
     picker.wheelEvent(event)
     assert picker.date() == before, "wheel scroll must never change the date"
     assert not event.isAccepted(), "event must be ignored, not swallowed, so page scroll still works"
+
+
+def test_date_field_does_not_stretch_across_a_wide_form() -> None:
+    """Rule: a date is 11 characters, so the field keeps its own width
+    even in a form row that would let it grow across the whole panel."""
+    from PySide6.QtWidgets import QApplication, QFormLayout, QWidget
+
+    from biracki_odbor.gui.widgets.date_picker import make_date_picker
+
+    host = QWidget()
+    form = QFormLayout(host)
+    form.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
+    dt = make_date_picker()
+    form.addRow("Датум:", dt)
+    host.resize(1200, 100)
+    host.show()
+    QApplication.instance().processEvents()
+    try:
+        assert dt.width() < 260, f"date field stretched to {dt.width()}px"
+    finally:
+        host.deleteLater()

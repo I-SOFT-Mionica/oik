@@ -11,7 +11,7 @@ from pathlib import Path
 
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
-    QComboBox, QFormLayout, QFrame, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+    QComboBox, QFileDialog, QFormLayout, QFrame, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
     QMessageBox, QPushButton, QScrollArea, QSpinBox, QVBoxLayout, QWidget,
 )
 
@@ -110,6 +110,8 @@ class SetupScreen(QWidget):
         self._reload_printers()
         self.copies_box.setVisible(False)
         root.addWidget(self.copies_box)
+
+        root.addWidget(self._build_reader_box())
 
         # Rebuilt per template — this document's own "same for every
         # copy in the session" fields (e.g. NPRS-3's certifier name),
@@ -364,3 +366,108 @@ class SetupScreen(QWidget):
             idx = self.cb_export_template.findData(info.export_template_name)
             if idx >= 0:
                 self.cb_export_template.setCurrentIndex(idx)
+
+    # ── ID-card reader (settings store) ───────────────────────────
+
+    def _build_reader_box(self) -> QGroupBox:
+        """Which Čelik API DLL and which smart-card reader to use. MUP
+        ships a new DLL for newer card chips; the operator can point at
+        it here without waiting for a Formalizator release."""
+        box = QGroupBox("Читач личних карата")
+        form = QFormLayout(box)
+        dll_row = QHBoxLayout()
+        self.lbl_dll = QLabel()
+        self.lbl_dll.setWordWrap(True)
+        dll_row.addWidget(self.lbl_dll, stretch=1)
+        self.btn_pick_dll = QPushButton("Изабери…")
+        self.btn_pick_dll.setToolTip("Изаберите CelikApi.dll, нпр. новију верзију са сајта МУП-а.")
+        self.btn_pick_dll.clicked.connect(self._pick_dll)
+        dll_row.addWidget(self.btn_pick_dll)
+        self.btn_default_dll = QPushButton("Подразумевано")
+        self.btn_default_dll.setToolTip("Користи CelikApi.dll који долази уз програм (или МУП-ову инсталацију).")
+        self.btn_default_dll.clicked.connect(self._reset_dll)
+        dll_row.addWidget(self.btn_default_dll)
+        form.addRow("Čelik API:", dll_row)
+
+        reader_row = QHBoxLayout()
+        self.cb_reader = QComboBox()
+        self.cb_reader.currentIndexChanged.connect(self._on_reader_changed)
+        reader_row.addWidget(self.cb_reader, stretch=1)
+        self.btn_refresh_readers = QPushButton("Освежи")
+        self.btn_refresh_readers.setToolTip("Поново потражи читаче — ако сте читач прикључили након покретања програма.")
+        self.btn_refresh_readers.clicked.connect(self._reload_readers)
+        reader_row.addWidget(self.btn_refresh_readers)
+        form.addRow("Читач:", reader_row)
+
+        self._refresh_dll_label()
+        self._reload_readers()
+        return box
+
+    def _refresh_dll_label(self) -> None:
+        from formalizator.core import settings as fz_settings
+        from formalizator.reader import eid_reader
+        chosen = fz_settings.load().celik_dll_path
+        if chosen:
+            if Path(chosen).exists():
+                v = eid_reader.dll_version(chosen)
+                self.lbl_dll.setText(f"{chosen}" + (f"  (верзија {v})" if v else ""))
+            else:
+                self.lbl_dll.setText(f"Изабрани фајл више не постоји: {chosen}")
+            self.btn_default_dll.setEnabled(True)
+            return
+        self.btn_default_dll.setEnabled(False)
+        default = eid_reader.default_dll_path()
+        if default is None:
+            self.lbl_dll.setText("Није пронађен — изаберите CelikApi.dll.")
+        else:
+            v = eid_reader.dll_version(default)
+            self.lbl_dll.setText("Подразумевани" + (f" (верзија {v})" if v else "") + f": {default}")
+
+    def _pick_dll(self) -> None:
+        from formalizator.core import settings as fz_settings
+        from formalizator.reader import eid_reader
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Изаберите CelikApi.dll", "", "Čelik API (*.dll)",
+        )
+        if not path:
+            return
+        if not eid_reader.dll_version(path):
+            QMessageBox.warning(
+                self, "Čelik API",
+                "Изабрани фајл није исправна DLL библиотека. Изаберите CelikApi.dll.",
+            )
+            return
+        cfg = fz_settings.load()
+        cfg.celik_dll_path = path
+        fz_settings.save(cfg)
+        self._refresh_dll_label()
+
+    def _reset_dll(self) -> None:
+        from formalizator.core import settings as fz_settings
+        cfg = fz_settings.load()
+        cfg.celik_dll_path = ""
+        fz_settings.save(cfg)
+        self._refresh_dll_label()
+
+    def _reload_readers(self) -> None:
+        from formalizator.core import settings as fz_settings
+        from formalizator.reader import eid_reader
+        saved = fz_settings.load().card_reader_name
+        names = eid_reader.list_readers()
+        self.cb_reader.blockSignals(True)
+        self.cb_reader.clear()
+        self.cb_reader.addItem("Први доступни читач", "")
+        for n in names:
+            self.cb_reader.addItem(n, n)
+        if saved and saved not in names:
+            # Remembered but not plugged in now: keep it selectable.
+            self.cb_reader.addItem(f"{saved} (није прикључен)", saved)
+        idx = self.cb_reader.findData(saved)
+        self.cb_reader.setCurrentIndex(max(0, idx))
+        self.cb_reader.blockSignals(False)
+
+    def _on_reader_changed(self) -> None:
+        from formalizator.core import settings as fz_settings
+        cfg = fz_settings.load()
+        cfg.card_reader_name = self.cb_reader.currentData() or ""
+        fz_settings.save(cfg)

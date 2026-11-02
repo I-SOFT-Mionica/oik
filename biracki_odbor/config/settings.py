@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from biracki_odbor.core.envelopes import EnvelopeSettings
 from biracki_odbor.core.observers import (
     CardSetup, LegitimacijaBlock, default_legitimacija_layout,
 )
@@ -104,6 +105,8 @@ class AppSettings:
     # NOT affected — those keep their functional app-internal defaults.
     default_files_dir: str = ""
     posmatraci: PosmatraciSettings = field(default_factory=PosmatraciSettings)
+    # Алати → Коверте: envelope type + layout (core/envelopes.py)
+    koverte: EnvelopeSettings = field(default_factory=EnvelopeSettings)
     # App version that last ran on this machine. Compared against the
     # running __version__ at startup to detect an upgrade and trigger
     # any one-time reconciliation (e.g. core/master_io.py's legacy
@@ -130,6 +133,7 @@ class AppSettings:
             "worker_stall_timeout_seconds": self.worker_stall_timeout_seconds,
             "default_files_dir": self.default_files_dir,
             "posmatraci": self.posmatraci.to_dict(),
+            "koverte": self.koverte.to_dict(),
             "last_run_version": self.last_run_version,
             "pending_maintenance_action": self.pending_maintenance_action,
         }
@@ -147,6 +151,7 @@ class AppSettings:
             worker_stall_timeout_seconds=int(d.get("worker_stall_timeout_seconds", 180)),
             default_files_dir=str(d.get("default_files_dir", "")),
             posmatraci=PosmatraciSettings.from_dict(d.get("posmatraci") or {}),
+            koverte=EnvelopeSettings.from_dict(d.get("koverte") or {}),
             last_run_version=str(d.get("last_run_version", "")),
             pending_maintenance_action=str(d.get("pending_maintenance_action", "")),
         )

@@ -15,7 +15,7 @@ from __future__ import annotations
 
 from PySide6.QtCore import QDate, QSize, Qt
 from PySide6.QtGui import QWheelEvent
-from PySide6.QtWidgets import QCalendarWidget, QDateEdit, QPushButton, QWidget
+from PySide6.QtWidgets import QCalendarWidget, QDateEdit, QPushButton, QSizePolicy, QWidget
 
 from biracki_odbor.gui.widgets.spinbox import inset_spinbox_text
 
@@ -59,6 +59,9 @@ def make_date_picker(
     dt.setCalendarPopup(True)
     dt.setDisplayFormat(display_format)
     dt.setMinimumWidth(min_width)
+    # A date is 11 characters: never let a form layout stretch the field
+    # across the panel (rule, see oik-gui-skill.md "Date fields").
+    dt.setSizePolicy(QSizePolicy.Policy.Fixed, dt.sizePolicy().verticalPolicy())
     inset_spinbox_text(dt)
     cal = dt.calendarWidget()
     if cal is not None:

@@ -20,11 +20,11 @@ correct, hard-won integration work confirmed against `Celik/CelikApi.h`
     dict — every prior copy read it into a struct and then discarded
     it.
 
-get_reader_name() still always returns b"" (no real multi-reader
-enumeration) — inherited from every prior copy; the DLL presumably
-supports it, but implementing real enumeration needs testing against
-actual multi-reader hardware this session doesn't have. Flagged, not
-silently carried forward as if it were solved.
+Reader choice: `list_readers()` enumerates the PC/SC readers Windows
+knows (SCardListReaders); the operator picks one in Formalizator's
+settings and its name goes to EidBeginRead. "" = the DLL's default
+(first reader), the old behaviour. Multi-reader behaviour still needs a
+check on real hardware with two readers attached.
 """
 
 from __future__ import annotations
@@ -170,10 +170,58 @@ def _resolve_dll_path(explicit_path: Path | str | None = None) -> Path:
     )
 
 
+def list_readers() -> list[str]:
+    """Names of the smart-card readers Windows knows, via PC/SC
+    (winscard.dll). Empty list when there are none, the smart-card
+    service is stopped, or this isn't Windows."""
+    if sys.platform != "win32":
+        return []
+    import ctypes
+    from ctypes import wintypes
+    winscard = ctypes.WinDLL("winscard")
+    SCARD_SCOPE_USER = 0  # noqa: N806
+    ctx = ctypes.c_void_p()
+    if winscard.SCardEstablishContext(SCARD_SCOPE_USER, None, None, ctypes.byref(ctx)) != 0:
+        return []
+    try:
+        size = wintypes.DWORD(0)
+        if winscard.SCardListReadersA(ctx, None, None, ctypes.byref(size)) != 0 or size.value == 0:
+            return []
+        buf = ctypes.create_string_buffer(size.value)
+        if winscard.SCardListReadersA(ctx, None, buf, ctypes.byref(size)) != 0:
+            return []
+        raw = buf.raw[: size.value]
+        return [n.decode("mbcs", errors="replace") for n in raw.split(b"\0") if n]
+    finally:
+        winscard.SCardReleaseContext(ctx)
+
+
+def default_dll_path() -> Path | None:
+    """The DLL the reader would load with no explicit path, or None."""
+    try:
+        return _resolve_dll_path(None)
+    except FileNotFoundError:
+        return None
+
+
+def dll_version(path: Path | str) -> str:
+    """File version of a DLL ("1.4.2.0"), or "" if unreadable. Shown on
+    the setup screen so the operator can see which Čelik API is in use
+    when MUP ships a new one for newer ID-card chips."""
+    try:
+        import win32api
+        info = win32api.GetFileVersionInfo(str(path), "\\")
+        ms, ls = info["FileVersionMS"], info["FileVersionLS"]
+        return f"{ms >> 16}.{ms & 0xFFFF}.{ls >> 16}.{ls & 0xFFFF}"
+    except Exception:  # noqa: BLE001 — not a DLL, no version resource, not Windows
+        return ""
+
+
 class SerbianIDReader:
     """Wrapper for the official Čelik API DLL."""
 
-    def __init__(self, dll_path: Path | str | None = None) -> None:
+    def __init__(self, dll_path: Path | str | None = None, reader_name: str = "") -> None:
+        self._reader_name = reader_name or ""
         if not EID_READER_AVAILABLE:
             raise EidReaderUnavailable(
                 f"eID reader unavailable on this platform: {_IMPORT_ERR or 'not Windows'}"
@@ -212,7 +260,9 @@ class SerbianIDReader:
         self.dll.EidCleanup()
 
     def get_reader_name(self) -> bytes:
-        return b""
+        """The configured reader, as the ANSI name EidBeginRead expects;
+        b"" lets the DLL take the first reader."""
+        return self._reader_name.encode("mbcs", errors="replace") if self._reader_name else b""
 
     def read_card(self) -> VoterEntry:
         card_type = c_int()

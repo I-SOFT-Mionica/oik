@@ -848,4 +848,7 @@ class AlatiPage(QWidget):
         # Backup: both are things the operator reaches for mid-task.
         tabs.addTab(FormalizatorPage(state), self.tr("Formalizator"))
         tabs.addTab(_BackupRestorePage(), self.tr("Backup"))
+        # Bonus tool, last: not part of the core workflow.
+        from biracki_odbor.gui.tabs.koverte_page import KovertePage
+        tabs.addTab(KovertePage(state), self.tr("Envelopes"))
         layout.addWidget(tabs)

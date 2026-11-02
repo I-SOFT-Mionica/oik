@@ -381,11 +381,29 @@ class FilloutScreen(QWidget):
     def _on_read_card(self) -> None:
         try:
             if self._reader is None:
-                self._reader = SerbianIDReader()
+                from formalizator.core import settings as fz_settings
+                cfg = fz_settings.load()
+                self._reader = SerbianIDReader(
+                    dll_path=cfg.celik_dll_path or None, reader_name=cfg.card_reader_name,
+                )
                 self._reader.startup()
             entry = self._reader.read_card()
         except EidReaderUnavailable as e:
             QMessageBox.critical(self, "Читач није доступан", str(e))
+            return
+        except OSError as e:
+            # Missing DLL (FileNotFoundError from the lookup) or one that
+            # won't load (wrong file, 32-bit copy). Used to crash the app.
+            self._reader = None
+            QMessageBox.critical(
+                self, "Čelik API није пронађен",
+                "Програм не може да учита CelikApi.dll, па не може да чита"
+                " личне карте.\n\n"
+                "На почетном екрану, у одељку „Читач личних карата“,"
+                " изаберите CelikApi.dll (нпр. новију верзију са сајта МУП-а)"
+                " или вратите подразумевани.\n\n"
+                f"Детаљи: {e}",
+            )
             return
         except EidReaderError as e:
             QMessageBox.warning(self, "Грешка при читању картице", str(e))

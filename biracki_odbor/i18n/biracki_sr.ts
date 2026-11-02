@@ -18,6 +18,11 @@
         <source>Backup</source>
         <translation>Резервна копија</translation>
     </message>
+    <message>
+        <location filename="../gui/tabs/alati_page.py" line="853"/>
+        <source>Envelopes</source>
+        <translation>Коверте</translation>
+    </message>
 </context>
 <context>
     <name>BasePhase1Tab</name>
@@ -120,6 +125,101 @@
         <location filename="../gui/tabs/phase1.py" line="438"/>
         <source>Created {ok} draft(s) in Outlook → Drafts. First opened for review.</source>
         <translation>Креирано {ok} нацрт(а) у Outlook → Drafts. Први је отворен за преглед.</translation>
+    </message>
+</context>
+<context>
+    <name>BlockLayout</name>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="210"/>
+        <source>Up</source>
+        <translation>Горе</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="210"/>
+        <source>Move up</source>
+        <translation>Помери горе</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="211"/>
+        <source>Down</source>
+        <translation>Доле</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="211"/>
+        <source>Move down</source>
+        <translation>Помери доле</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="212"/>
+        <source>Remove</source>
+        <translation>Уклони</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="212"/>
+        <source>Remove block</source>
+        <translation>Уклони блок</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="222"/>
+        <source>Width:</source>
+        <translation>Ширина:</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="229"/>
+        <source>Block width in 12-column grid.
+12 = full width  |  6 = half  |  4 = third  |  3 = quarter</source>
+        <translation>Ширина блока у 12-колонском растеру.
+12 = пуна ширина  |  6 = половина  |  4 = трећина  |  3 = четвртина</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="237"/>
+        <source>Height:</source>
+        <translation>Висина:</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="241"/>
+        <source>Relative block height in rows (1 = standard row).</source>
+        <translation>Релативна висина блока у редовима (1 = стандардни ред).</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="246"/>
+        <source>Alignment:</source>
+        <translation>Поравнање:</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="250"/>
+        <source>Left</source>
+        <translation>Лево</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="250"/>
+        <source>Center</source>
+        <translation>Центар</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="250"/>
+        <source>Right</source>
+        <translation>Десно</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="319"/>
+        <source>Save</source>
+        <translation>Сачувај</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="369"/>
+        <source>+ Add block</source>
+        <translation>+ Додај блок</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="372"/>
+        <source>Reset to default</source>
+        <translation>Врати на подразумевано</translation>
+    </message>
+    <message>
+        <location filename="../gui/widgets/block_layout_editor.py" line="523"/>
+        <source>Saved ✓</source>
+        <translation>Сачувано ✓</translation>
     </message>
 </context>
 <context>
@@ -2654,6 +2754,108 @@ Fill them in or select &apos;Непосредно&apos; above.</source>
     </message>
 </context>
 <context>
+    <name>KovertePage</name>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="48"/>
+        <location filename="../gui/tabs/koverte_page.py" line="214"/>
+        <location filename="../gui/tabs/koverte_page.py" line="223"/>
+        <source>Envelopes</source>
+        <translation>Коверте</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="49"/>
+        <source>Envelope layout</source>
+        <translation>Распоред на коверти</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="50"/>
+        <source>Envelope preview (first selected BM)</source>
+        <translation>Преглед коверте (прво изабрано БМ)</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="64"/>
+        <source>e.g. ELECTION MATERIAL</source>
+        <translation>нпр. ИЗБОРНИ МАТЕРИЈАЛ</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="66"/>
+        <source>Placeholders replaced for each envelope:
+  [bm]           → polling station number
+  [bm_name]      → polling station name
+  [municipality] → municipality name
+  [election]     → election name</source>
+        <translation>Ознаке које се замењују на свакој коверти:
+  [bm]           → број бирачког места
+  [bm_name]      → назив бирачког места
+  [municipality] → назив општине
+  [election]     → назив избора</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="78"/>
+        <source>Open folder…</source>
+        <translation>Отвори фасциклу…</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="81"/>
+        <source>Generate envelopes</source>
+        <translation>Генериши коверте</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="86"/>
+        <source>Envelope</source>
+        <translation>Коверта</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="95"/>
+        <source>Envelope type:</source>
+        <translation>Врста коверте:</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="98"/>
+        <source>Polling stations (one envelope each):</source>
+        <translation>Бирачка места (по једна коверта):</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="105"/>
+        <source>Select all</source>
+        <translation>Изабери сва</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="107"/>
+        <source>Select none</source>
+        <translation>Поништи избор</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="215"/>
+        <source>Select at least one polling station (Поставке ИК → Бирачка места).</source>
+        <translation>Изаберите бар једно бирачко место (Поставке ИК → Бирачка места).</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="224"/>
+        <source>Could not save the envelopes (is the file open in Word?):
+{error}</source>
+        <translation>Коверте нису сачуване (да ли је фајл отворен у Word-у?):
+{error}</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="229"/>
+        <source>{n} envelope(s) saved: {name}</source>
+        <translation>Сачувано коверти: {n} — {name}</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="239"/>
+        <source>Folder</source>
+        <translation>Фасцикла</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/koverte_page.py" line="239"/>
+        <source>Output folder:
+{folder}</source>
+        <translation>Излазна фасцикла:
+{folder}</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../gui/main_window.py" line="48"/>
@@ -4129,90 +4331,90 @@ Use &apos;Import files…&apos; to manually select .xlsx files.</source>
         <translation>Датум седнице:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="167"/>
+        <location filename="../gui/tabs/phase3.py" line="169"/>
         <source>e.g. 5</source>
         <translation>нпр. 5</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="170"/>
+        <location filename="../gui/tabs/phase3.py" line="173"/>
         <source>Session number:</source>
         <translation>Број седнице:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="213"/>
+        <location filename="../gui/tabs/phase3.py" line="218"/>
         <source>Decision number</source>
         <translation>Број решења</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="217"/>
+        <location filename="../gui/tabs/phase3.py" line="222"/>
         <source>Each decision gets a label: prefix + separator + sub-number / year.
 The sub-number increments by 1 per polling station.</source>
         <translation>Свако решење добија ознаку: префикс + раздвојник + подброј / година.
 Подброј расте за 1 по бирачком месту.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="221"/>
+        <location filename="../gui/tabs/phase3.py" line="226"/>
         <source>e.g. 013-5-30</source>
         <translation>нпр. 013-5-30</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="224"/>
+        <location filename="../gui/tabs/phase3.py" line="229"/>
         <source>Number prefix:</source>
         <translation>Префикс броја:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="226"/>
+        <location filename="../gui/tabs/phase3.py" line="231"/>
         <source>e.g. - or /</source>
         <translation>нпр. - или /</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="231"/>
+        <location filename="../gui/tabs/phase3.py" line="236"/>
         <source>Sub-number separator:</source>
         <translation>Раздвојник подброја:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="233"/>
+        <location filename="../gui/tabs/phase3.py" line="238"/>
         <source>e.g. 200</source>
         <translation>нпр. 200</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="237"/>
+        <location filename="../gui/tabs/phase3.py" line="242"/>
         <source>Starting sub-number:</source>
         <translation>Почетни подброј:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="175"/>
+        <location filename="../gui/tabs/phase3.py" line="180"/>
         <source>Legal basis</source>
         <translation>Правни основ</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="180"/>
+        <location filename="../gui/tabs/phase3.py" line="185"/>
         <source>Text of the law articles that will appear in the decision header…</source>
         <translation>Текст законских чланова koji ће се приказати у заглављу решења…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="189"/>
+        <location filename="../gui/tabs/phase3.py" line="194"/>
         <source>Rationale</source>
         <translation>Образложење</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="198"/>
+        <location filename="../gui/tabs/phase3.py" line="203"/>
         <source>+ Add paragraph</source>
         <translation>+ Додај параграф</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="201"/>
-        <location filename="../gui/tabs/phase3.py" line="478"/>
+        <location filename="../gui/tabs/phase3.py" line="206"/>
+        <location filename="../gui/tabs/phase3.py" line="483"/>
         <source>Reset to default</source>
         <translation>Врати на подразумевано</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="203"/>
+        <location filename="../gui/tabs/phase3.py" line="208"/>
         <source>Restores the canonical legal text from the program. All user edits will be lost.</source>
         <translation>Враћа канонски правни текст из програма. Сви кориснички уноси ће бити изгубљени.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="258"/>
+        <location filename="../gui/tabs/phase3.py" line="263"/>
         <source>Open decisions folder…</source>
         <translation>Отвори фасциклу решења…</translation>
     </message>
@@ -4225,78 +4427,78 @@ The sub-number increments by 1 per polling station.</source>
         <translation type="vanished">Прави Outlook/Thunderbird нацрт по члану са одговарајућим решењем (.docx) као прилогом. Ради само за чланове са попуњеном е-поштом. нацрти се НЕ шаљу аутоматски.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="262"/>
+        <location filename="../gui/tabs/phase3.py" line="267"/>
         <source>Send</source>
         <translation>Пошаљи</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="264"/>
+        <location filename="../gui/tabs/phase3.py" line="269"/>
         <source>Send decisions to members. Creates an Outlook/Thunderbird draft per member with the corresponding decision (.docx) as attachment. Works only for members with a filled email. Drafts are NOT sent automatically.</source>
         <translation>Пошаљи решења члановима. Прави Outlook/Thunderbird нацрт по члану са одговарајућим решењем (.docx) у прилогу. Ради само за чланове са унетом е-поштом. Нацрти се НЕ шаљу аутоматски.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="275"/>
+        <location filename="../gui/tabs/phase3.py" line="280"/>
         <source>Refresh checks</source>
         <translation>Освежи провере</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="278"/>
+        <location filename="../gui/tabs/phase3.py" line="283"/>
         <source>Run</source>
         <translation>Покрени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="282"/>
+        <location filename="../gui/tabs/phase3.py" line="287"/>
         <source>Submitted to RIK</source>
         <translation>Предато РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="285"/>
+        <location filename="../gui/tabs/phase3.py" line="290"/>
         <source>Marks decisions as submitted to RIK. After this step Phase 3
 cannot be re-run — corrections go through the Amendments tab.</source>
         <translation>Означава решења као предата РИК-у. Након овог корака Фаза 3
 не може поново да се покрене — исправке иду кроз таб Измене.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="291"/>
+        <location filename="../gui/tabs/phase3.py" line="296"/>
         <source>Withdraw submission</source>
         <translation>Повуци предају</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="293"/>
+        <location filename="../gui/tabs/phase3.py" line="298"/>
         <source>Cancels the &apos;Submitted to RIK&apos; status. Available only if no amendment decisions have been issued.</source>
         <translation>Поништава статус &apos;Предато РИК-у&apos;. Доступно само ако нису издата решења о измени.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="479"/>
+        <location filename="../gui/tabs/phase3.py" line="484"/>
         <source>The current rationale text will be replaced with the standard legal text. Continue?</source>
         <translation>Тренутни текст образложења биће замењен стандардним законским текстом. Наставити?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="551"/>
-        <location filename="../gui/tabs/phase3.py" line="608"/>
-        <location filename="../gui/tabs/phase3.py" line="1237"/>
-        <location filename="../gui/tabs/phase3.py" line="1352"/>
+        <location filename="../gui/tabs/phase3.py" line="556"/>
+        <location filename="../gui/tabs/phase3.py" line="613"/>
+        <location filename="../gui/tabs/phase3.py" line="1242"/>
+        <location filename="../gui/tabs/phase3.py" line="1357"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="551"/>
-        <location filename="../gui/tabs/phase3.py" line="608"/>
+        <location filename="../gui/tabs/phase3.py" line="556"/>
+        <location filename="../gui/tabs/phase3.py" line="613"/>
         <source>Cannot save: {error}</source>
         <translation>Не могу да сачувам: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1048"/>
+        <location filename="../gui/tabs/phase3.py" line="1053"/>
         <source>Decisions submitted to RIK. Corrections go through the Amendments tab.</source>
         <translation>Решења предата РИК-у. Исправке иду кроз таб Измене.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1069"/>
+        <location filename="../gui/tabs/phase3.py" line="1074"/>
         <source>Consolidated table does not exist. Run Phase 2.</source>
         <translation>Збирна табела не постоји. Покрените Фазу 2.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1058"/>
+        <location filename="../gui/tabs/phase3.py" line="1063"/>
         <source>{name} was changed outside the application since it was last verified ({when}). Resolve in Corrections before generating decisions.</source>
         <translation>{name} је измењен изван апликације од последње провере ({when}). Решите у Корекцијама пре генерисања решења.</translation>
     </message>
@@ -4325,37 +4527,37 @@ cannot be re-run — corrections go through the Amendments tab.</source>
         <translation type="vanished">Размак текста после:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1084"/>
+        <location filename="../gui/tabs/phase3.py" line="1089"/>
         <source>{n} slot(s) not filled. Edit via Phase 2.5 or mark as chief appointment before generating decisions.</source>
         <translation>{n} места нису попуњена. Уредите кроз Фазу 2.5 или означите као именовање начелником пре генерисања решења.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1097"/>
+        <location filename="../gui/tabs/phase3.py" line="1102"/>
         <source>Pre-flight has {n} {error_word}.</source>
         <translation>Прелиминарне провере имају {n} {error_word}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1102"/>
+        <location filename="../gui/tabs/phase3.py" line="1107"/>
         <source>Pre-flight: {n} warning(s). You can run Phase 3.</source>
         <translation>Прелиминарне провере: {n} упозорење/а. Можете покренути Фазу 3.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1106"/>
+        <location filename="../gui/tabs/phase3.py" line="1111"/>
         <source>All checks passed. You can run Phase 3.</source>
         <translation>Све провере прошле. Можете покренути Фазу 3.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1126"/>
+        <location filename="../gui/tabs/phase3.py" line="1131"/>
         <source>No data in the consolidated table.</source>
         <translation>Нема података у збирној табели.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1172"/>
+        <location filename="../gui/tabs/phase3.py" line="1177"/>
         <source>Decisions edited by hand</source>
         <translation>Решења мењана ручно</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1174"/>
+        <location filename="../gui/tabs/phase3.py" line="1179"/>
         <source>{n} decision(s) were changed after they were generated (e.g. edited in Word):
 
 {names}
@@ -4368,22 +4570,22 @@ Overwrite them with freshly generated ones, or keep your edits?</source>
 Да ли да их замените новогенерисаним или да задржите своје измене?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1178"/>
+        <location filename="../gui/tabs/phase3.py" line="1183"/>
         <source>Overwrite all</source>
         <translation>Пресними све</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1179"/>
+        <location filename="../gui/tabs/phase3.py" line="1184"/>
         <source>Keep edited</source>
         <translation>Задржи измењена</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1222"/>
+        <location filename="../gui/tabs/phase3.py" line="1227"/>
         <source>Phase 3 completed with {n} {error_word}.</source>
         <translation>Фаза 3 завршена са {n} {error_word}.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1226"/>
+        <location filename="../gui/tabs/phase3.py" line="1231"/>
         <source>Generated {n} decision(s) with {w} warning(s).</source>
         <translation>Генерисано {n} решење(а) са {w} упозорење(а).</translation>
     </message>
@@ -4392,47 +4594,47 @@ Overwrite them with freshly generated ones, or keep your edits?</source>
         <translation type="vanished">Готово! Генерисано {n} решење(а) у resenja\.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1230"/>
+        <location filename="../gui/tabs/phase3.py" line="1235"/>
         <source>Done! Generated {n} decision(s).</source>
         <translation>Готово! Генерисано {n} решења.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1238"/>
+        <location filename="../gui/tabs/phase3.py" line="1243"/>
         <source>Unexpected error: {error}</source>
         <translation>Неочекивана грешка: {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1257"/>
+        <location filename="../gui/tabs/phase3.py" line="1262"/>
         <source>File changed outside the application — see Corrections.</source>
         <translation>Фајл је измењен изван апликације — погледајте Корекције.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1270"/>
+        <location filename="../gui/tabs/phase3.py" line="1275"/>
         <source>{n} of {total} members have email</source>
         <translation>{n} од {total} чланова имају е-пошту</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1272"/>
+        <location filename="../gui/tabs/phase3.py" line="1277"/>
         <source>{n} without</source>
         <translation>{n} без е-поште</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1287"/>
+        <location filename="../gui/tabs/phase3.py" line="1292"/>
         <source>{name} was changed outside the application — resolve in Corrections before sending.</source>
         <translation>{name} је измењен изван апликације — решите у Корекцијама пре слања.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1294"/>
+        <location filename="../gui/tabs/phase3.py" line="1299"/>
         <source>No members with email.</source>
         <translation>Нема чланова са е-поштом.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1333"/>
+        <location filename="../gui/tabs/phase3.py" line="1338"/>
         <source>Missing files</source>
         <translation>Недостају фајлови</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1334"/>
+        <location filename="../gui/tabs/phase3.py" line="1339"/>
         <source>The following decision files were not found:
 {files}
 
@@ -4443,12 +4645,12 @@ Run Phase 3 first, then send.</source>
 Прво покрените Фазу 3, затим шаљите.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1348"/>
+        <location filename="../gui/tabs/phase3.py" line="1353"/>
         <source>Email client unavailable</source>
         <translation>Мејл клијент није доступан</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1352"/>
+        <location filename="../gui/tabs/phase3.py" line="1357"/>
         <source>Error creating drafts:
 
 {error}</source>
@@ -4457,12 +4659,12 @@ Run Phase 3 first, then send.</source>
 {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1360"/>
+        <location filename="../gui/tabs/phase3.py" line="1365"/>
         <source>Drafts — partial</source>
         <translation>нацрти — делимично</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1361"/>
+        <location filename="../gui/tabs/phase3.py" line="1366"/>
         <source>Created {ok} draft(s), {n_failed} failed:
 
 {details}</source>
@@ -4471,22 +4673,22 @@ Run Phase 3 first, then send.</source>
 {details}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1363"/>
+        <location filename="../gui/tabs/phase3.py" line="1368"/>
         <source>Created {ok} draft(s); {n_failed} failed.</source>
         <translation>Креирано {ok} нацрт(а); {n_failed} није успело.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1366"/>
+        <location filename="../gui/tabs/phase3.py" line="1371"/>
         <source>Created {n} draft(s) for members. Review before sending.</source>
         <translation>Креирано {n} нацрт(а) за чланове. Прегледати пре слања.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1384"/>
+        <location filename="../gui/tabs/phase3.py" line="1389"/>
         <source>Submit decisions to RIK</source>
         <translation>Предај решења РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1386"/>
+        <location filename="../gui/tabs/phase3.py" line="1391"/>
         <source>By checking this action you confirm that the decisions have been submitted to RIK.
 
 After this step:
@@ -4507,37 +4709,37 @@ This action is reversible only if no amendment decisions have been issued.</sour
 Ова акција може бити опозвана само ако нису издата решења о измени.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1394"/>
+        <location filename="../gui/tabs/phase3.py" line="1399"/>
         <source>I understand — decisions have been submitted to RIK</source>
         <translation>Разумем — решења су предата РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1395"/>
+        <location filename="../gui/tabs/phase3.py" line="1400"/>
         <source>Confirm</source>
         <translation>Потврди</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1396"/>
+        <location filename="../gui/tabs/phase3.py" line="1401"/>
         <source>Cancel</source>
         <translation>Откажи</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1416"/>
+        <location filename="../gui/tabs/phase3.py" line="1421"/>
         <source>Cannot withdraw</source>
         <translation>Не може се повући</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1417"/>
+        <location filename="../gui/tabs/phase3.py" line="1422"/>
         <source>Amendment decisions exist. The submission cannot be withdrawn.</source>
         <translation>Решења о измени постоје. Предаја не може бити повучена.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1421"/>
+        <location filename="../gui/tabs/phase3.py" line="1426"/>
         <source>Withdraw RIK submission</source>
         <translation>Повуци предају РИК-у</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1422"/>
+        <location filename="../gui/tabs/phase3.py" line="1427"/>
         <source>Do you want to withdraw the &apos;Submitted to RIK&apos; status?
 
 Phase 3 will become available again.</source>
@@ -4546,17 +4748,17 @@ Phase 3 will become available again.</source>
 Фаза 3 ће поново постати доступна.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1428"/>
+        <location filename="../gui/tabs/phase3.py" line="1433"/>
         <source>&apos;Submitted to RIK&apos; status has been withdrawn.</source>
         <translation>Статус &apos;Предато РИК-у&apos; је повучен.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1440"/>
+        <location filename="../gui/tabs/phase3.py" line="1445"/>
         <source>Could not open the folder. It is at: {path}</source>
         <translation>Фасцикла није могла да се отвори. Налази се на: {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/phase3.py" line="1443"/>
+        <location filename="../gui/tabs/phase3.py" line="1448"/>
         <source>Opened folder: {path}</source>
         <translation>Отворена фасцикла: {path}</translation>
     </message>
@@ -4564,17 +4766,17 @@ Phase 3 will become available again.</source>
 <context>
     <name>PosmatraciWorkspace</name>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1669"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1153"/>
         <source>0. ID cards</source>
         <translation>0. Легитимација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1670"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1154"/>
         <source>1. Accreditation</source>
         <translation>1. Акредитација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1671"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1155"/>
         <source>2. Documents</source>
         <translation>2. Документи</translation>
     </message>
@@ -5542,142 +5744,142 @@ to review the restored configuration.</source>
 <context>
     <name>_AkreditacijaTab</name>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="308"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="311"/>
         <source>Accredited organizations</source>
         <translation>Акредитоване организације</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="320"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="707"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="323"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="710"/>
         <source>Name</source>
         <translation>Назив</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="320"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="707"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="323"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="710"/>
         <source>Contact</source>
         <translation>Контакт</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="328"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="331"/>
         <source>Add organization</source>
         <translation>Додај организацију</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="331"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="390"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="334"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="393"/>
         <source>Edit</source>
         <translation>Измени</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="334"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="393"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="498"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="550"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="337"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="396"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="501"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="553"/>
         <source>Delete</source>
         <translation>Обриши</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="344"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="347"/>
         <source>Excel format: Name | Contact</source>
         <translation>Excel формат: Назив | Контакт</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="353"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="356"/>
         <source>Observers</source>
         <translation>Посматрачи</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="366"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="734"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="369"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="737"/>
         <source>Last name</source>
         <translation>Презиме</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="366"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="734"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="369"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="737"/>
         <source>First name</source>
         <translation>Име</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="366"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="734"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="369"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="737"/>
         <source>JMBG</source>
         <translation>ЈМБГ</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="367"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="735"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="370"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="738"/>
         <source>Organization</source>
         <translation>Организација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="367"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="735"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="370"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="738"/>
         <source>PS assignment</source>
         <translation>Расп. БМ</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="367"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="370"/>
         <source>ID no.</source>
         <translation>Бр.лег.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="387"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="390"/>
         <source>Add observer</source>
         <translation>Додај посматрача</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="399"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="402"/>
         <source>Export a blank observers template.</source>
         <translation>Извези празан шаблон посматрача.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="636"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="639"/>
         <source>Import organizations from Excel</source>
         <translation>Увези организације из Excel-а</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="677"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="680"/>
         <source>Found {n} organization(s)</source>
         <translation>Пронађено {n} организациј(а)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="679"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="682"/>
         <source> ({n} rows skipped — empty or duplicate name)</source>
         <translation> ({n} редова прескочено — празан или дупли назив)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="696"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="699"/>
         <source>Export organizations template</source>
         <translation>Извези шаблон организација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="715"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="746"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="718"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="749"/>
         <source>Cannot write template:
 {error}</source>
         <translation>Не могу да упишем шаблон:
 {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="718"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="749"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="721"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="752"/>
         <source>Template exported: {path}</source>
         <translation>Шаблон извезен: {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="722"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="725"/>
         <source>Export observers template</source>
         <translation>Извези шаблон посматрача</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="736"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="739"/>
         <source>ID no. (opt.)</source>
         <translation>Бр. легитимације (опц.)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="736"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="739"/>
         <source>Note (opt.)</source>
         <translation>Напомена (опц.)</translation>
     </message>
@@ -5686,97 +5888,97 @@ to review the restored configuration.</source>
         <translation type="vanished">Увези из Excel-а…</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="405"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="408"/>
         <source>Excel format: Last name | First name | JMBG | Organization | PS assignment | ID no. (opt.) | Note (opt.)</source>
         <translation>Excel формат: Презиме | Ime | ЈМБГ | Организација | Расп. БМ | Бр.лег. (оп.) | Напомена (оп.)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="435"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="438"/>
         <source>Warning — JMBG duplicates: {dups}</source>
         <translation>Упозорење — дупликати ЈМБГ: {dups}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="499"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="502"/>
         <source>Delete organization «{name}»?</source>
         <translation>Обрисати организацију «{name}»?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="551"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="554"/>
         <source>Delete observer «{name}»?</source>
         <translation>Обрисати посматрача «{name}»?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="562"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="565"/>
         <source>Import observers from Excel</source>
         <translation>Увези посматраче из Excel-а</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="575"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="649"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="715"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="746"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="578"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="652"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="718"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="749"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="576"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="650"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="579"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="653"/>
         <source>Cannot open file:
 {error}</source>
         <translation>Не могу да отворим фајл:
 {error}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="310"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="343"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="355"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="402"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="612"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="673"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="313"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="346"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="358"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="405"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="615"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="676"/>
         <source>Import</source>
         <translation>Увоз</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="339"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="398"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="342"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="401"/>
         <source>Export</source>
         <translation>Извези</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="340"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="343"/>
         <source>Export a blank organizations template. Excel format: Name | Contact</source>
         <translation>Извези празан шаблон организација. Excel формат: Назив | Контакт</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="612"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="673"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="615"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="676"/>
         <source>No valid rows to import.</source>
         <translation>Нема исправних редова за увоз.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="616"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="619"/>
         <source>Found {n} observer(s)</source>
         <translation>Пронађено {n} посматрача</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="618"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="621"/>
         <source> and {n} new organization(s)</source>
         <translation> и {n} нових организација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="620"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="623"/>
         <source> ({n} rows skipped — incomplete data)</source>
         <translation> ({n} редова прескочено — непотпуни подаци)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="621"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="680"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="624"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="683"/>
         <source>Add to registry?</source>
         <translation>Додати у регистар?</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="624"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="683"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="627"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="686"/>
         <source>Confirm import</source>
         <translation>Потврда увоза</translation>
     </message>
@@ -5825,51 +6027,51 @@ to review the restored configuration.</source>
 <context>
     <name>_DocumentiTab</name>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="766"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="769"/>
         <source>Document generation</source>
         <translation>Генерисање докумената</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="778"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="781"/>
         <source>1. Master list</source>
         <translation>1. Збирна листа</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="782"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="785"/>
         <source>Excel table of all observers, sorted by PS and organization.
 Output: posmatraci/master_posmatraci.xlsx</source>
         <translation>Excel табела свих посматрача, сортирана по БМ и организацији.
 Излаз: posmatraci/master_posmatraci.xlsx</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="789"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="792"/>
         <source>Generate master list</source>
         <translation>Генериши збирну листу</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="796"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="799"/>
         <source>2. Lists by polling station</source>
         <translation>2. Листе по бирачким местима</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="800"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="803"/>
         <source>One Word document per polling station, grouped by organization.
 Output: posmatraci/liste/</source>
         <translation>По један Word документ за свако бирачко место, груписан по организацији.
 Излаз: posmatraci/liste/</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="807"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="810"/>
         <source>Generate lists by PS</source>
         <translation>Генериши листе по БМ</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="814"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="817"/>
         <source>3. Observer ID cards</source>
         <translation>3. Легитимације</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="818"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="821"/>
         <source>Word document with observer ID cards for printing.
 Block layout is configured in OIK Settings → Observers.
 Output: posmatraci/legitimacije/legitimacije.docx</source>
@@ -5878,27 +6080,27 @@ Output: posmatraci/legitimacije/legitimacije.docx</source>
 Излаз: posmatraci/legitimacije/legitimacije.docx</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="826"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="829"/>
         <source>Generate ID cards</source>
         <translation>Генериши легитимације</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="863"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="866"/>
         <source>Master list: {path}</source>
         <translation>Збирна листа: {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="887"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="890"/>
         <source>Generated {n} lists by PS.</source>
         <translation>Генерисано {n} листа по БМ.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="918"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="921"/>
         <source>Observer ID cards: {path}</source>
         <translation>Легитимације: {path}</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="922"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="925"/>
         <source>Error: {err}</source>
         <translation>Грешка: {err}</translation>
     </message>
@@ -5919,88 +6121,72 @@ Output: posmatraci/legitimacije/legitimacije.docx</source>
 <context>
     <name>_LegitimacijaBlockCard</name>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1181"/>
         <source>Up</source>
-        <translation>Горе</translation>
+        <translation type="vanished">Горе</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1183"/>
         <source>Move up</source>
-        <translation>Помери горе</translation>
+        <translation type="vanished">Помери горе</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1187"/>
         <source>Down</source>
-        <translation>Доле</translation>
+        <translation type="vanished">Доле</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1189"/>
         <source>Move down</source>
-        <translation>Помери доле</translation>
+        <translation type="vanished">Помери доле</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1193"/>
         <source>Remove</source>
-        <translation>Уклони</translation>
+        <translation type="vanished">Уклони</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1195"/>
         <source>Remove block</source>
-        <translation>Уклони блок</translation>
+        <translation type="vanished">Уклони блок</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1203"/>
         <source>Width:</source>
-        <translation>Ширина:</translation>
+        <translation type="vanished">Ширина:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1212"/>
         <source>Block width in 12-column grid.
 12 = full width  |  6 = half  |  4 = third  |  3 = quarter</source>
-        <translation>Ширина блока у 12-колонском растеру.
+        <translation type="vanished">Ширина блока у 12-колонском растеру.
 12 = пуна ширина  |  6 = половина  |  4 = трећина  |  3 = четвртина</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1220"/>
         <source>Height:</source>
-        <translation>Висина:</translation>
+        <translation type="vanished">Висина:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1224"/>
         <source>Relative block height in rows (1 = standard row).</source>
-        <translation>Релативна висина блока у редовима (1 = стандардни ред).</translation>
+        <translation type="vanished">Релативна висина блока у редовима (1 = стандардни ред).</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1229"/>
         <source>Alignment:</source>
-        <translation>Поравнање:</translation>
+        <translation type="vanished">Поравнање:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1234"/>
         <source>Left</source>
-        <translation>Лево</translation>
+        <translation type="vanished">Лево</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1235"/>
         <source>Center</source>
-        <translation>Центар</translation>
+        <translation type="vanished">Центар</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1236"/>
         <source>Right</source>
-        <translation>Десно</translation>
+        <translation type="vanished">Десно</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1251"/>
         <source>e.g. REPUBLIC OF SERBIA or [municipality]</source>
-        <translation>нпр. РЕПУБЛИКА СРБИЈА или [municipality]</translation>
+        <translation type="vanished">нпр. РЕПУБЛИКА СРБИЈА или [municipality]</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1255"/>
         <source>Placeholders replaced during generation:
   [municipality] → municipality name
   [election]     → election name</source>
-        <translation>Ознаке које се замењују при генерисању:
+        <translation type="vanished">Ознаке које се замењују при генерисању:
   [municipality] → назив општине
   [election]     → назив избора</translation>
     </message>
@@ -6008,109 +6194,118 @@ Output: posmatraci/legitimacije/legitimacije.docx</source>
 <context>
     <name>_LegitimacijaTab</name>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1312"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="985"/>
         <source>Legitimacija design</source>
         <translation>Дизајн легитимације</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1316"/>
         <source>Save</source>
-        <translation>Сачувај</translation>
+        <translation type="vanished">Сачувај</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1343"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1020"/>
         <source>Legitimacija card settings</source>
         <translation>Поставке карте легитимације</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1355"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1032"/>
         <source>mm</source>
         <translation>мм</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1359"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1036"/>
         <source>Legitimacija width in mm (e.g. 90.0)</source>
         <translation>Ширина легитимације у мм (нпр. 90.0)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1360"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1037"/>
         <source>Card width:</source>
         <translation>Ширина карте:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1363"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1039"/>
         <source>Legitimacija height in mm (e.g. 60.0)</source>
         <translation>Висина легитимације у мм (нпр. 60.0)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1364"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1040"/>
         <source>Card height:</source>
         <translation>Висина карте:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1367"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1042"/>
         <source>Gap between cards (e.g. 5.0)</source>
         <translation>Размак између карата (нпр. 5.0)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1368"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1043"/>
         <source>Gap (gutter):</source>
         <translation>Размак (gutter):</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1371"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1045"/>
         <source>Sheet margin on each side (e.g. 10.0)</source>
         <translation>Маргина листа са сваке стране (нпр. 10.0)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1372"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1046"/>
         <source>Sheet margin:</source>
         <translation>Маргина листа:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1380"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1054"/>
         <source>Paper size:</source>
         <translation>Величина папира:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1384"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1058"/>
         <source>Capacity:</source>
         <translation>Капацитет:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1389"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="986"/>
         <source>Block layout on legitimacija</source>
         <translation>Распоред блокова на легитимацији</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1415"/>
         <source>+ Add block</source>
-        <translation>+ Додај блок</translation>
+        <translation type="vanished">+ Додај блок</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1418"/>
         <source>Reset to default</source>
-        <translation>Врати на подразумевано</translation>
+        <translation type="vanished">Врати на подразумевано</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1419"/>
         <source>Resets the layout to the standard template (Mionica 2024)</source>
-        <translation>Враћа распоред на стандардни образац (Мионица 2024)</translation>
+        <translation type="vanished">Враћа распоред на стандардни образац (Мионица 2024)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1433"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="987"/>
         <source>Card preview</source>
         <translation>Преглед карте</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1488"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1008"/>
+        <source>e.g. REPUBLIC OF SERBIA or [municipality]</source>
+        <translation>нпр. РЕПУБЛИКА СРБИЈА или [municipality]</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1010"/>
+        <source>Placeholders replaced during generation:
+  [municipality] → municipality name
+  [election]     → election name</source>
+        <translation>Ознаке које се замењују при генерисању:
+  [municipality] → назив општине
+  [election]     → назив избора</translation>
+    </message>
+    <message>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="1102"/>
         <source>{n} card(s) per {paper} sheet ({w}×{h} mm)</source>
         <translation>{n} карт(е/а) по листу {paper} ({w}×{h} мм)</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="1641"/>
         <source>Saved ✓</source>
-        <translation>Сачувано ✓</translation>
+        <translation type="vanished">Сачувано ✓</translation>
     </message>
 </context>
 <context>
@@ -6562,123 +6757,123 @@ Check whether the chief has replied.</source>
 <context>
     <name>_ObserverEditDialog</name>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="128"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="131"/>
         <source>Observer</source>
         <translation>Посматрач</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="141"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="144"/>
         <source>Last name</source>
         <translation>Презиме</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="142"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="145"/>
         <source>Last name:</source>
         <translation>Презиме:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="145"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="148"/>
         <source>First name</source>
         <translation>Име</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="146"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="149"/>
         <source>First name:</source>
         <translation>Име:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="149"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="152"/>
         <source>13 digits</source>
         <translation>13 цифара</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="151"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="154"/>
         <source>JMBG:</source>
         <translation>ЈМБГ:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="165"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="168"/>
         <source>Organization:</source>
         <translation>Организација:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="168"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="171"/>
         <source>e.g. All PS or PS 01, PS 03</source>
         <translation>нпр. Сва БМ или БМ 01, БМ 03</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="169"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="172"/>
         <source>PS assignment:</source>
         <translation>Расп. БМ:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="172"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="175"/>
         <source>leave empty if not needed</source>
         <translation>оставити празно ако није потребно</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="173"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="176"/>
         <source>ID card number:</source>
         <translation>Бр. легитимације:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="176"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="179"/>
         <source>Note:</source>
         <translation>Напомена:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="213"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="219"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="226"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="249"/>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="258"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="216"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="222"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="229"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="252"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="261"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="213"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="216"/>
         <source>Enter first name and last name.</source>
         <translation>Унесите Ime и Презиме.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="220"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="223"/>
         <source>Select or enter an organization name.</source>
         <translation>Изаберите или унесите назив организације.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="227"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="230"/>
         <source>Enter the polling station assignment (e.g. &apos;All PS&apos;).</source>
         <translation>Унесите расподелу бирачких места (нпр. &apos;Сва БМ&apos;).</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="251"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="254"/>
         <source>A person with this JMBG is already a polling board member
 and cannot be an observer.</source>
         <translation>Особа са овим ЈМБГ-ом већ је члан бирачког одбора
 и не може бити посматрач.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="259"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="262"/>
         <source>The observer must be at least 18 years old on election day.</source>
         <translation>Посматрач мора имати најмање 18 година на дан избора.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="265"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="268"/>
         <source>JMBG does not pass MOD 11 check.</source>
         <translation>ЈМБГ не пролази МОД 11 проверу.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="267"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="270"/>
         <source>An observer with the same JMBG already exists in the list.</source>
         <translation>Посматрач са истим ЈМБГ-ом већ постоји у листи.</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="270"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="273"/>
         <source>Warning</source>
         <translation>Упозорење</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="271"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="274"/>
         <source>Continue?</source>
         <translation>Наставити?</translation>
     </message>
@@ -6686,37 +6881,37 @@ and cannot be an observer.</source>
 <context>
     <name>_OrgEditDialog</name>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="70"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="73"/>
         <source>Accredited organization</source>
         <translation>Акредитована организација</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="79"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="82"/>
         <source>Organization name</source>
         <translation>Назив организације</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="80"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="83"/>
         <source>Name:</source>
         <translation>Назив:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="83"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="86"/>
         <source>Contact person / phone / email</source>
         <translation>Контакт особа / телефон / е-пошта</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="84"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="87"/>
         <source>Contact:</source>
         <translation>Контакт:</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="105"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="108"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../gui/tabs/posmatraci_workspace.py" line="105"/>
+        <location filename="../gui/tabs/posmatraci_workspace.py" line="108"/>
         <source>Enter the organization name.</source>
         <translation>Унесите назив организације.</translation>
     </message>

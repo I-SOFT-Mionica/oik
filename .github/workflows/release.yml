@@ -1,0 +1,120 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# Public repo (I-SOFT-Mionica/oik): builds the installers for a tag and
+# publishes them as a GitHub release. Written in the private repo under
+# public/.github/ and copied by tools/publish_public.py, so edit it there.
+#
+# No secrets for our update server or the update-signing key live here:
+# the private repo downloads these assets, signs release-manifest.json and
+# uploads to the server itself. Code signing (SignPath) is added here once
+# the project is approved; until then the installers are unsigned.
+name: Release
+run-name: "Release ${{ inputs.tag || github.ref_name }}"
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  # Rebuild an existing tag: Actions → Release → Run workflow.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to build (e.g. v0.104.0). Must already exist."
+        required: true
+        type: string
+
+permissions:
+  contents: write    # create the release and upload its assets
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          check-latest: true
+          cache: pip
+
+      # The interpreter is bundled into every installer, so its security
+      # fixes are ours. 3.14.10 carries the Oct 2026 ssl fixes.
+      - name: Require a patched Python
+        run: |
+          python -c "import sys, ssl; print(sys.version, ssl.OPENSSL_VERSION); assert sys.version_info >= (3, 14, 10), 'Python older than 3.14.10'"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          python -m pip install pyinstaller
+
+      # Official builds talk to the licensing server; the URL is public, so
+      # it's a repository variable, not a secret. Unset = no licensing
+      # server (a plain open-source build).
+      - name: Inject licensing server URL
+        if: vars.LICENSING_SERVER_URL != ''
+        env:
+          LICENSING_SERVER_URL: ${{ vars.LICENSING_SERVER_URL }}
+        run: |
+          (Get-Content biracki_odbor/_build_config.py) `
+            -replace 'LICENSING_SERVER_URL: str = ""', `
+                     "LICENSING_SERVER_URL: str = `"$env:LICENSING_SERVER_URL`"" `
+            | Set-Content biracki_odbor/_build_config.py
+
+      # Only the first build uses --clean: later ones must keep dist/,
+      # because each Setup spec bundles the .exes built before it.
+      - name: Build OIK
+        run: pyinstaller --clean --noconfirm OIK.spec
+
+      - name: Build OIK uninstaller
+        run: pyinstaller --noconfirm OIK_Uninstaller.spec
+
+      - name: Build OIK installer (bundles app + uninstaller)
+        run: pyinstaller --noconfirm OIK_Setup.spec
+
+      - name: Build Formalizator
+        run: pyinstaller --noconfirm Formalizator.spec
+
+      - name: Build Formalizator uninstaller
+        run: pyinstaller --noconfirm Formalizator_Uninstaller.spec
+
+      - name: Build Formalizator installer (bundles app + uninstaller)
+        run: pyinstaller --noconfirm Formalizator_Setup.spec
+
+      # A wizard-only shell is ~40-60 MB; with the app inside it's >100 MB.
+      - name: Verify installers bundle their apps
+        run: |
+          foreach ($f in @("OIK_Setup.exe", "Formalizator_Setup.exe")) {
+            $mb = [math]::Round((Get-Item "dist\$f").Length / 1MB)
+            Write-Host "$f = ${mb} MB"
+            if ($mb -lt 100) { throw "$f is only ${mb} MB; the app was not bundled." }
+          }
+
+      - name: Compute SHA-256 checksums
+        run: |
+          $files = @("OIK_Setup.exe", "Formalizator_Setup.exe")
+          $lines = foreach ($f in $files) {
+            "$((Get-FileHash "dist\$f" -Algorithm SHA256).Hash)  $f"
+          }
+          $lines | Set-Content -Path "dist\SHA256SUMS.txt" -Encoding UTF8
+          Get-Content "dist\SHA256SUMS.txt"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ env.TAG }}
+          tag_name: ${{ env.TAG }}
+          prerelease: ${{ contains(env.TAG, '-') }}
+          body: |
+            Windows installers for OIK — Бирачки одбор and Formalizator, built from this tag by GitHub Actions.
+            Check downloads against SHA256SUMS.txt.
+          files: |
+            dist/OIK_Setup.exe
+            dist/Formalizator_Setup.exe
+            dist/SHA256SUMS.txt

@@ -4,6 +4,19 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/sr/1.1.0/), верзионисање по [SemVer](https://semver.org/lang/sr/).
 
+## 0.105.0 (2026-10-28)
+
+* feat(formalizator): settings store; choose the Čelik DLL and the card reader ([f2e2a85](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/f2e2a85))
+
+## 0.104.0 (2026-10-27)
+
+* feat(alati): Коверте — envelopes per polling station ([357013c](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/357013c))
+
+## <small>0.103.2 (2026-10-27)</small>
+
+* fix(gui): date fields stay compact; Решења session date and number on one row ([1f82532](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/1f82532))
+* ci: setup-python check-latest so builds get the newest 3.14 patch ([a5fed23](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/a5fed23))
+
 ## <small>0.103.1 (2026-10-27)</small>
 
 * fix(build): build installers on Python 3.14 (patched ssl), not 3.12.10 ([3cc1fee](https://github.com/I-SOFT-Mionica/biracki-odbor/commit/3cc1fee))

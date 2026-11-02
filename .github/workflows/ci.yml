@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# Public repo (I-SOFT-Mionica/oik): tests on every push and pull request.
+# Written in the private repo under public/.github/ and copied by
+# tools/publish_public.py, so edit it there, not here.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          check-latest: true
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Run tests
+        env:
+          PYTHONIOENCODING: utf-8
+          # Software rendering: no real windows on the runner, and avoids a
+          # PySide6/Windows shutdown race seen with the native platform.
+          QT_QPA_PLATFORM: offscreen
+        run: python -m pytest -q

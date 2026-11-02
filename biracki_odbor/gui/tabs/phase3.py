@@ -158,17 +158,22 @@ class Phase3Tab(QWidget):
 
         # Section: Session
         left.addWidget(self._section_label(self.tr("Session")))
-        session_form = QFormLayout()
-        session_form.setLabelAlignment(Qt.AlignmentFlag.AlignRight)
+        # Date and number on one row: both are short values.
+        session_row = QHBoxLayout()
         self.dt_session = make_date_picker()
         self.dt_session.dateChanged.connect(self._on_session_date_changed)
-        session_form.addRow(self.tr("Session date:"), self.dt_session)
+        session_row.addWidget(QLabel(self.tr("Session date:")))
+        session_row.addWidget(self.dt_session)
+        session_row.addSpacing(16)
         self.ed_session_number = QLineEdit()
         self.ed_session_number.setPlaceholderText(self.tr("e.g. 5"))
         self.ed_session_number.setValidator(int_validator(min_value=1, max_value=999))
+        self.ed_session_number.setFixedWidth(90)
         self.ed_session_number.editingFinished.connect(self._save_session_fields)
-        session_form.addRow(self.tr("Session number:"), self.ed_session_number)
-        left.addLayout(session_form)
+        session_row.addWidget(QLabel(self.tr("Session number:")))
+        session_row.addWidget(self.ed_session_number)
+        session_row.addStretch()
+        left.addLayout(session_row)
 
         # Section: Legal basis
         left.addWidget(self._div())
